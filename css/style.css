@@ -156,6 +156,17 @@ header.site.nav-open .nav-toggle span:nth-child(3){ transform:translateY(-8px) r
   opacity:0; animation:fadeUp 1.2s ease 1.5s forwards;
 }
 .hero__scroll i{ width:1px; height:46px; background:rgba(255,255,255,.5); animation:scrollLine 2.2s ease-in-out infinite; transform-origin:top; }
+
+/* ============ 3Dガラストーラス（WebGL / Three.js） ============ */
+.hero__spinner{
+  position:absolute; left:50%; top:50%; transform:translate(-50%, -50%);
+  z-index:1; pointer-events:none;
+  width:clamp(360px, 60vw, 720px); aspect-ratio:1;
+}
+.hero__spinner .torus-gl{
+  width:100%; height:100%; display:block;
+}
+
 @keyframes scrollLine{ 0%{transform:scaleY(0)} 50%{transform:scaleY(1)} 100%{transform:scaleY(0); transform-origin:bottom} }
 @keyframes fadeUp{ from{opacity:0; transform:translateY(22px)} to{opacity:1; transform:translateY(0)} }
 
