@@ -54,6 +54,8 @@
 <!-- ============ セキュリティ ============ -->
 <!-- MIME スニッフィング防止 -->
 <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+<!-- クリックジャッキング攻撃防止 -->
+<meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
 <!-- リファラ情報の制限（外部サイトへの情報漏洩防止） -->
 <meta name="referrer" content="strict-origin-when-cross-origin" />
 <!-- コンテンツセキュリティポリシー（XSS・不正スクリプト対策） -->
@@ -99,6 +101,11 @@
     <div class="hero__slide s1 active"></div>
     <div class="hero__slide s2"></div>
     <div class="hero__slide s3"></div>
+  </div>
+
+  <!-- 3Dガラストーラス（WebGL / Three.js） -->
+  <div class="hero__spinner" aria-hidden="true">
+    <canvas class="torus-gl"></canvas>
   </div>
 
   <div class="hero__inner">
@@ -292,6 +299,8 @@
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
 </button>
 
+<script src="js/lib/three.min.js"></script>
+<script src="js/torus3d.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>
