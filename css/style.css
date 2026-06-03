@@ -1,0 +1,345 @@
+@charset "UTF-8";
+/* ===================================================================
+   株式会社 P.FORWARD  オフィシャルサイト  -  style.css
+   配色：濃紺 #0b192c / サッゴールド #c5a880 / 生成り白 #faf8f5
+   （ブランド・コンセプト資料 ＋ qraud.com の世界観に準拠）
+=================================================================== */
+
+:root{
+  --navy:        #0b192c;   /* 基調の濃紺（深い夜の海） */
+  --navy-2:      #10233b;
+  --ink:         #16202c;   /* テキスト（濃紺寄りの黒） */
+  --paper:       #ffffff;   /* 白基調 */
+  --paper-soft:  #faf8f5;   /* 生成り白（やわらかな余白色） */
+  --gold:        #c5a880;   /* アクセント：サッゴールド（上質・和） */
+  --gold-soft:   #d8c39e;
+  --gold-deep:   #a9895f;
+  --line:        rgba(22,32,44,.12);
+  --muted:       #46535f;
+  --serif: "Shippori Mincho", "Yu Mincho", "游明朝", serif;
+  --sans:  "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+  --maxw: 1120px;
+}
+
+*{ margin:0; padding:0; box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  font-family:var(--sans);
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.9;
+  -webkit-font-smoothing:antialiased;
+  letter-spacing:.02em;
+}
+img{ display:block; max-width:100%; }
+a{ color:inherit; text-decoration:none; }
+b{ font-weight:500; }
+
+/* ============ ヘッダー ============ */
+header.site{
+  position:fixed; inset:0 0 auto 0; z-index:100;
+  display:flex; align-items:center; justify-content:flex-start; gap:clamp(24px,4vw,56px);
+  padding:20px clamp(20px,5vw,56px);
+  transition:background .5s ease, padding .5s ease, box-shadow .5s ease;
+}
+.brand{
+  display:flex; flex-direction:column; line-height:1; gap:4px;
+  --logo-h: clamp(52px, 6.5vw, 84px);
+  --logo-w: calc(var(--logo-h) * 1.1307);  /* 2543÷2249 の比率 */
+}
+.brand a{ display:block; line-height:0; }
+.brand-logo{
+  height: var(--logo-h);
+  width: var(--logo-w);
+  display: block;
+  object-fit: contain;
+}
+.brand .tagline{
+  font-size:8px; letter-spacing:.02em;
+  color:rgba(255,255,255,.65); transition:color .5s ease;
+  display:block;
+  width: var(--logo-w);
+  text-align:justify; text-align-last:justify;
+}
+header.site.scrolled .brand .tagline{ color:var(--gold-deep); }
+header.site nav{ display:flex; gap:clamp(16px,2.6vw,38px); }
+header.site nav a{
+  font-size:13px; letter-spacing:.16em; color:rgba(255,255,255,.88);
+  position:relative; padding:4px 0; transition:color .4s ease;
+}
+header.site nav a::after{
+  content:""; position:absolute; left:0; bottom:-2px; width:0; height:1px;
+  background:var(--gold); transition:width .4s ease;
+}
+header.site nav a:hover::after{ width:100%; }
+
+header.site.scrolled{
+  background:rgba(255,255,255,.95);
+  backdrop-filter:saturate(140%) blur(8px);
+  padding:13px clamp(20px,5vw,56px);
+  box-shadow:0 1px 0 var(--line);
+}
+header.site.scrolled .brand .logo{ color:var(--navy); }
+header.site.scrolled .brand .tagline{ color:var(--gold-deep); }
+header.site.scrolled nav a{ color:var(--ink); }
+
+/* ハンバーガーボタン（モバイルのみ表示） */
+.nav-toggle{
+  display:none; position:relative; z-index:130; margin-left:auto;
+  width:42px; height:42px; border:0; background:transparent; cursor:pointer;
+  padding:0; flex-direction:column; align-items:center; justify-content:center; gap:6px;
+}
+.nav-toggle span{
+  display:block; width:26px; height:2px; background:#fff;
+  transition:transform .4s ease, opacity .3s ease, background .4s ease;
+}
+header.site.scrolled .nav-toggle span{ background:var(--navy); }
+/* 開いている時は×印に。ドロワーは濃紺背景なのでバーは白に固定 */
+header.site.nav-open .nav-toggle span{ background:#fff; }
+header.site.nav-open .nav-toggle span:nth-child(1){ transform:translateY(8px) rotate(45deg); }
+header.site.nav-open .nav-toggle span:nth-child(2){ opacity:0; }
+header.site.nav-open .nav-toggle span:nth-child(3){ transform:translateY(-8px) rotate(-45deg); }
+
+/* ============ ヒーロー ============ */
+.hero{
+  position:relative; height:100vh; min-height:600px;
+  display:flex; align-items:center; justify-content:center;
+  overflow:hidden; text-align:center; color:#fff;
+}
+.hero__slides{ position:absolute; inset:0; z-index:0; }
+.hero__slide{
+  position:absolute; inset:0;
+  background-size:cover; background-position:center;
+  opacity:0; transform:scale(1.08);
+  transition:opacity 2.4s ease-in-out, transform 8s ease-in-out;
+}
+.hero__slide.active{ opacity:1; transform:scale(1); }
+
+.hero__slide.s1{
+  background-image:
+    linear-gradient(180deg, rgba(0,0,0,.18) 0%, rgba(0,0,0,.38) 100%),
+    url("../images/hero-1.jpg");
+}
+.hero__slide.s2{
+  background-image:
+    linear-gradient(180deg, rgba(0,0,0,.18) 0%, rgba(0,0,0,.38) 100%),
+    url("../images/hero-2.jpg");
+}
+.hero__slide.s3{
+  background-image:
+    linear-gradient(180deg, rgba(0,0,0,.18) 0%, rgba(0,0,0,.38) 100%),
+    url("../images/hero-3.jpg");
+}
+
+.hero__inner{ position:relative; z-index:2; padding:0 24px; max-width:940px; }
+.hero__eyebrow{
+  font-family:var(--serif); letter-spacing:.38em; font-size:clamp(11px,1.4vw,14px);
+  color:var(--gold-soft); margin-bottom:28px;
+  opacity:0; animation:fadeUp 1.2s ease .4s forwards;
+}
+.hero__title{
+  font-family:var(--serif); font-weight:700;
+  font-size:clamp(32px,6.2vw,74px); line-height:1.34; letter-spacing:.06em;
+  text-shadow:0 2px 30px rgba(0,0,0,.4);
+  opacity:0; animation:fadeUp 1.3s ease .7s forwards;
+}
+.hero__title .accent{ color:var(--gold-soft); }
+.hero__sub{
+  margin-top:30px; font-weight:300; font-size:clamp(14px,1.8vw,18px);
+  letter-spacing:.18em; color:rgba(255,255,255,.92);
+  opacity:0; animation:fadeUp 1.3s ease 1.05s forwards;
+}
+.hero__scroll{
+  position:absolute; left:50%; bottom:34px; transform:translateX(-50%);
+  z-index:2; font-size:10px; letter-spacing:.3em; color:rgba(255,255,255,.7);
+  display:flex; flex-direction:column; align-items:center; gap:10px;
+  opacity:0; animation:fadeUp 1.2s ease 1.5s forwards;
+}
+.hero__scroll i{ width:1px; height:46px; background:rgba(255,255,255,.5); animation:scrollLine 2.2s ease-in-out infinite; transform-origin:top; }
+@keyframes scrollLine{ 0%{transform:scaleY(0)} 50%{transform:scaleY(1)} 100%{transform:scaleY(0); transform-origin:bottom} }
+@keyframes fadeUp{ from{opacity:0; transform:translateY(22px)} to{opacity:1; transform:translateY(0)} }
+
+/* ============ 共通セクション ============ */
+.section{ padding:clamp(72px,11vw,140px) clamp(20px,5vw,40px); }
+.wrap{ max-width:var(--maxw); margin:0 auto; }
+.sec-head{ text-align:center; margin-bottom:clamp(44px,7vw,80px); }
+.sec-head .en{
+  display:block; font-family:var(--serif); letter-spacing:.42em;
+  color:var(--gold-deep); font-size:12px; margin-bottom:18px;
+}
+.sec-head .ja{
+  font-family:var(--serif); font-weight:600;
+  font-size:clamp(26px,3.6vw,40px); letter-spacing:.08em; color:var(--navy);
+}
+.lead{
+  max-width:780px; margin:0 auto; text-align:center;
+  font-size:clamp(15px,1.7vw,17px); color:var(--muted); font-weight:300;
+}
+
+/* ── 経営理念：MISSION / VISION の2大ステートメント ── */
+.creed{ background:var(--paper-soft); }
+.creed__grid{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(24px,4vw,56px); }
+.creed__item{ text-align:center; padding:clamp(28px,3vw,40px) clamp(16px,2vw,28px); position:relative; }
+.creed__item + .creed__item::before{
+  content:""; position:absolute; left:0; top:14%; height:72%; width:1px; background:var(--line);
+}
+.creed__item .label{ font-family:var(--serif); letter-spacing:.34em; color:var(--gold-deep); font-size:13px; }
+.creed__item .stmt{
+  font-family:var(--serif); font-weight:700; color:var(--navy);
+  font-size:clamp(24px,3.2vw,38px); line-height:1.55; letter-spacing:.05em; margin:22px 0 18px;
+}
+.creed__item p{ font-size:14.5px; color:var(--muted); font-weight:300; max-width:30em; margin:0 auto; }
+
+/* ── 概要本文（About / 事業背景） ── */
+.about__lead{
+  font-family:var(--serif); text-align:center; color:var(--navy);
+  font-size:clamp(18px,2.4vw,26px); line-height:1.9; letter-spacing:.05em; margin-bottom:40px;
+}
+.about__lead .accent{ color:var(--gold-deep); }
+.about__cols{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(24px,4vw,56px); margin-top:clamp(36px,5vw,60px); }
+.about__cols h3{ font-family:var(--serif); color:var(--navy); font-size:19px; letter-spacing:.06em; margin-bottom:14px; padding-bottom:12px; border-bottom:1px solid var(--line); }
+.about__cols p{ font-size:14.5px; color:var(--muted); font-weight:300; }
+.tags{ display:flex; flex-wrap:wrap; gap:10px; margin-top:18px; }
+.tags span{ font-size:12.5px; letter-spacing:.06em; color:var(--navy); border:1px solid var(--line); border-radius:999px; padding:6px 16px; background:#fff; }
+
+/* ── 方向性：事業領域カード ── */
+.cards{ display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(18px,2.6vw,28px); }
+.card{
+  background:var(--paper); border:1px solid var(--line); border-radius:4px;
+  padding:clamp(28px,3vw,40px) clamp(22px,2.4vw,32px);
+  transition:transform .6s ease, box-shadow .6s ease, border-color .6s ease;
+}
+.card:hover{ transform:translateY(-8px); box-shadow:0 24px 60px rgba(11,25,44,.10); border-color:var(--gold-soft); }
+.card .no{ font-family:var(--serif); color:var(--gold-deep); letter-spacing:.3em; font-size:13px; }
+.card h3{ font-family:var(--serif); font-weight:700; color:var(--navy); font-size:clamp(18px,2vw,22px); letter-spacing:.06em; margin:12px 0 10px; }
+.card h3 small{ display:block; font-family:var(--sans); font-weight:400; font-size:11px; letter-spacing:.22em; color:var(--gold-deep); margin-top:8px; }
+.card p{ font-size:14px; color:var(--muted); font-weight:300; }
+
+/* ── ロードマップ（PHASE） ── */
+.roadmap{ background:var(--paper-soft); }
+.timeline{ max-width:880px; margin:0 auto; position:relative; }
+.timeline::before{ content:""; position:absolute; left:18px; top:8px; bottom:8px; width:1px; background:var(--line); }
+.phase{ position:relative; padding:0 0 clamp(36px,5vw,52px) 56px; }
+.phase:last-child{ padding-bottom:0; }
+.phase .dot{ position:absolute; left:9px; top:4px; width:19px; height:19px; border-radius:50%; background:var(--paper-soft); border:2px solid var(--gold); }
+.phase .when{ font-family:var(--serif); color:var(--gold-deep); letter-spacing:.16em; font-size:13px; }
+.phase h4{ font-family:var(--serif); color:var(--navy); font-size:clamp(18px,2.1vw,23px); letter-spacing:.05em; margin:6px 0 8px; }
+.phase .tag-mini{ display:inline-block; font-size:11px; letter-spacing:.18em; color:var(--gold-deep); border:1px solid var(--gold-soft); border-radius:3px; padding:2px 10px; margin-bottom:10px; }
+.phase p{ font-size:14px; color:var(--muted); font-weight:300; }
+
+/* ── グループ内での役割 ── */
+.group{ }
+.group .roles{ display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(16px,2.4vw,28px); margin-top:clamp(36px,5vw,56px); }
+.group .role{ text-align:center; padding:clamp(24px,2.6vw,34px) 14px; border:1px solid var(--line); border-radius:4px; background:#fff; }
+.group .role .badge{ font-family:var(--serif); color:var(--gold-deep); letter-spacing:.2em; font-size:12px; }
+.group .role h4{ font-family:var(--serif); color:var(--navy); font-size:clamp(17px,2vw,21px); letter-spacing:.06em; margin:10px 0 12px; }
+.group .role p{ font-size:13.5px; color:var(--muted); font-weight:300; }
+.group .role.self{ background:var(--navy); border-color:var(--navy); }
+.group .role.self .badge{ color:var(--gold-soft); }
+.group .role.self h4{ color:#fff; }
+.group .role.self p{ color:rgba(255,255,255,.78); }
+
+/* ── 想い（フルワイドの帯） ── */
+.philosophy{ background:var(--navy); color:#fff; position:relative; overflow:hidden; }
+.philosophy::before{
+  content:""; position:absolute; inset:0;
+  background:radial-gradient(80% 120% at 80% 0%, rgba(197,168,128,.16) 0%, transparent 60%);
+}
+.philosophy .wrap{ position:relative; z-index:1; }
+.philosophy .sec-head .ja{ color:#fff; }
+.philosophy .sec-head .en{ color:var(--gold-soft); }
+.philosophy .body{
+  max-width:800px; margin:0 auto; text-align:center;
+  font-family:var(--serif); font-weight:500;
+  font-size:clamp(17px,2.1vw,22px); line-height:2.2; letter-spacing:.05em;
+  color:rgba(255,255,255,.94);
+}
+.philosophy .body em{ font-style:normal; color:var(--gold-soft); }
+.philosophy .sign{ margin-top:48px; text-align:center; letter-spacing:.3em; font-size:13px; color:rgba(255,255,255,.7); }
+.philosophy .sign strong{ font-family:var(--serif); font-weight:700; color:#fff; letter-spacing:.18em; }
+
+/* ============ フッター ============ */
+footer.site{ background:var(--navy-2); color:rgba(255,255,255,.82); padding:clamp(56px,7vw,80px) clamp(20px,5vw,40px) 32px; }
+footer.site .wrap{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:40px; }
+footer.site .f-brand .logo{ font-family:var(--serif); font-weight:700; font-size:24px; letter-spacing:.16em; color:#fff; }
+footer.site .f-brand .logo span{ color:var(--gold-soft); }
+footer.site .f-brand .tagline{ margin-top:8px; font-size:10px; letter-spacing:.32em; color:rgba(255,255,255,.5); }
+footer.site .f-brand .tag{ margin-top:16px; font-size:13px; letter-spacing:.12em; color:rgba(255,255,255,.62); font-weight:300; }
+footer.site .f-info{ font-size:14px; font-weight:300; line-height:2.2; }
+footer.site .f-info .row{ display:flex; gap:14px; }
+footer.site .f-info dt{ flex:0 0 4.5em; color:var(--gold-soft); letter-spacing:.1em; }
+footer.site .f-info a:hover{ color:#fff; text-decoration:underline; }
+footer.site .copy{
+  max-width:var(--maxw); margin:48px auto 0; padding-top:24px;
+  border-top:1px solid rgba(255,255,255,.12);
+  text-align:center; font-size:12px; letter-spacing:.18em; color:rgba(255,255,255,.55);
+}
+
+/* ============ ページトップボタン ============ */
+.pagetop{
+  position:fixed; right:24px; bottom:28px; z-index:200;
+  width:48px; height:48px; border-radius:8px; border:0;
+  background:var(--navy); color:#fff; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  opacity:0; visibility:hidden; transform:translateY(12px);
+  transition:opacity .4s ease, transform .4s ease, visibility .4s, background .3s;
+  box-shadow:0 4px 18px rgba(0,0,0,.28);
+}
+.pagetop svg{ width:22px; height:22px; }
+.pagetop.show{ opacity:1; visibility:visible; transform:none; }
+.pagetop:hover{ background:var(--gold-deep); }
+
+/* ============ スクロール表示アニメ ============ */
+.reveal{ opacity:0; transform:translateY(34px); transition:opacity 1s ease, transform 1s ease; }
+.reveal.in{ opacity:1; transform:none; }
+
+/* ============ レスポンシブ ============ */
+/* タブレット */
+@media (max-width:1024px){
+  .cards{ grid-template-columns:repeat(2,1fr); }
+}
+@media (max-width:860px){
+  .creed__grid{ grid-template-columns:1fr; gap:8px; }
+  .creed__item + .creed__item::before{ display:none; }
+  .about__cols{ grid-template-columns:1fr; }
+  .group .roles{ grid-template-columns:1fr; }
+}
+
+/* モバイル：ハンバーガー＋ドロワーメニュー */
+@media (max-width:768px){
+  .nav-toggle{ display:flex; }
+  .brand .tagline{ display:none; }
+
+  header.site nav{
+    position:fixed; inset:0; z-index:120;
+    flex-direction:column; align-items:center; justify-content:center;
+    gap:clamp(22px,5vh,40px);
+    background:rgba(11,25,44,.97);
+    backdrop-filter:blur(6px);
+    opacity:0; visibility:hidden; transform:translateY(-12px);
+    transition:opacity .45s ease, transform .45s ease, visibility .45s;
+  }
+  header.site.nav-open nav{ opacity:1; visibility:visible; transform:none; }
+
+  /* スクロール後（白ヘッダー）でもドロワー内のリンクは白で表示 */
+  header.site nav a,
+  header.site.scrolled nav a{ color:#fff; font-size:19px; letter-spacing:.22em; padding:8px 0; }
+  header.site nav a::after{ background:var(--gold-soft); height:1px; }
+
+  .cards{ grid-template-columns:1fr; }
+}
+
+@media (max-width:480px){
+  .hero__title{ font-size:30px; line-height:1.4; }
+  .timeline::before{ left:14px; }
+  .phase{ padding-left:46px; }
+  .phase .dot{ left:5px; }
+  footer.site .f-info .row{ flex-direction:column; gap:0; }
+  footer.site .f-info dt{ flex-basis:auto; }
+}
+
+@media (prefers-reduced-motion:reduce){
+  *{ animation:none !important; transition:none !important; }
+  .hero__slide{ opacity:0; } .hero__slide.active{ opacity:1; }
+  .reveal{ opacity:1; transform:none; }
+}
