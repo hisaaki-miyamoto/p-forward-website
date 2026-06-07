@@ -7,7 +7,7 @@
 
   if (typeof THREE === "undefined") return;
 
-  var spinner = document.querySelector(".hero__spinner");
+  var spinner = document.querySelector(".ring3d");
   var canvas = document.querySelector(".torus-gl");
   if (!spinner || !canvas) return;
 
@@ -155,6 +155,8 @@
   }
   resize();
   window.addEventListener("resize", resize, { passive: true });
+  // リング枠を移動した後などに外部から再フィットできるよう公開
+  window.__pfTorusResize = resize;
 
   /* ---- 回転：水平軸まわりに前転（24秒で1回転）しつつ、
      正面を向くたびに傾き軸が「右上45°」⇄「左上45°」と入れ替わる ----
