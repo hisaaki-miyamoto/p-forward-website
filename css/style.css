@@ -186,8 +186,8 @@ header.site.nav-open .nav-toggle span:nth-child(3){ transform:translateY(-8px) r
   font-size:clamp(20px,2.6vw,28px); letter-spacing:.08em; color:var(--navy);
 }
 .lead{
-  max-width:560px; margin:0 auto; text-align:center;
-  font-size:clamp(12.5px,1.5vw,14px); color:var(--muted); font-weight:300;
+  max-width:34em; margin:0 auto; text-align:left;
+  font-size:clamp(12.5px,1.5vw,14px); color:var(--muted); font-weight:300; line-height:1.95;
 }
 
 /* ── 経営理念：MISSION / VISION の2大ステートメント ── */
@@ -207,8 +207,9 @@ header.site.nav-open .nav-toggle span:nth-child(3){ transform:translateY(-8px) r
 
 /* ── 概要本文（About / 事業背景） ── */
 .about__lead{
-  font-family:var(--serif); text-align:center; color:var(--navy);
-  font-size:clamp(15px,2vw,19px); line-height:1.9; letter-spacing:.05em; margin-bottom:36px;
+  font-family:var(--serif); text-align:left; color:var(--navy);
+  max-width:34em; margin:0 auto 36px;
+  font-size:clamp(15px,2vw,19px); line-height:1.95; letter-spacing:.05em;
 }
 .about__lead .accent{ color:var(--gold-deep); }
 .about__cols{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(20px,4vw,40px); margin-top:clamp(32px,5vw,48px); }
@@ -370,7 +371,9 @@ footer.site .copy{
   header.site.scrolled nav a{ color:#fff; font-size:19px; letter-spacing:.22em; padding:8px 0; }
   header.site nav a::after{ background:var(--gold-soft); height:1px; }
 
-  .cards{ grid-template-columns:1fr; }
+  /* スマホでも事業領域カードは2列を維持 */
+  .cards{ grid-template-columns:repeat(2,1fr); }
+  .card{ padding:clamp(16px,4vw,24px) clamp(13px,3.4vw,18px); }
 }
 
 @media (max-width:480px){
