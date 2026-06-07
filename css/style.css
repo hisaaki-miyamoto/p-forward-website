@@ -137,9 +137,7 @@ header.site.nav-open .nav-toggle span:nth-child(3){ transform:translateY(-8px) r
   padding:clamp(30px,5vw,46px) clamp(24px,5vw,40px);
   border-radius:22px;
   border:1px solid rgba(255,255,255,.5);          /* 枠 */
-  background:rgba(10,20,34,.22);                    /* 透過（フロストガラス） */
-  backdrop-filter:blur(10px) saturate(130%);
-  -webkit-backdrop-filter:blur(10px) saturate(130%);
+  background:transparent;                           /* 普通に透過（ぼかしなし） */
   /* 立体（厚み）＋側面のシルバー鏡面グラデーション */
   box-shadow:
     0 2px 0 rgba(228,233,240,.92),
@@ -210,6 +208,7 @@ header.site.nav-open .nav-toggle span:nth-child(3){ transform:translateY(-8px) r
   font-size:clamp(15px,2vw,20px); line-height:1.55; letter-spacing:.03em; margin:16px 0 14px;
 }
 .creed__item p{ font-size:13px; color:var(--muted); font-weight:300; max-width:30em; margin:0 auto; }
+.creed__item p:not(.stmt){ text-align:left; }
 
 /* ── 概要本文（About / 事業背景） ── */
 .about__lead{
@@ -254,12 +253,12 @@ header.site.nav-open .nav-toggle span:nth-child(3){ transform:translateY(-8px) r
 .group .roles{
   position:relative;
   display:grid; grid-template-columns:repeat(2, minmax(0,1fr));
-  gap:clamp(56px,9vw,92px);                    /* 間隔を詰めて箱をリングに近づける */
+  gap:clamp(16px,2.4vw,28px);
   max-width:540px; margin:clamp(32px,5vw,48px) auto 0;
 }
 .group .role.self{
   grid-row:1; grid-column:1 / -1;
-  width:calc(50% - clamp(28px,4.5vw,46px));    /* 下段カードと同じ幅で頂点に */
+  width:calc(50% - clamp(8px,1.2vw,14px));      /* 下段カードと同じ幅で頂点に */
   justify-self:center;
 }
 .group .role:first-child{ grid-row:2; grid-column:1; }   /* ① 左下 */
@@ -270,25 +269,6 @@ header.site.nav-open .nav-toggle span:nth-child(3){ transform:translateY(-8px) r
   aspect-ratio:2.2; display:flex; flex-direction:column; justify-content:center;
   text-align:center; padding:clamp(12px,1.6vw,18px) 12px;
   border:1px solid var(--line); border-radius:4px; background:#fff;
-}
-/* 3枠を結ぶ連結線（カードの背面に置き、隙間部分だけ見える） */
-.group .roles__links{
-  position:absolute; inset:0; z-index:0; width:100%; height:100%;
-  pointer-events:none; overflow:visible;
-}
-.group .roles__links line{ stroke:var(--gold); stroke-width:1.4; opacity:.7; }
-/* 中央スペースに収まる3Dリング（位置はJSで重心へ） */
-.group .ring3d{
-  position:absolute; z-index:2; pointer-events:none;
-  width:clamp(96px,13vw,128px); aspect-ratio:1;   /* 箱に近い中央リング */
-  left:50%; top:50%; transform:translate(-50%,-50%);
-}
-.ring3d .torus-gl{ width:100%; height:100%; display:block; }
-/* スマホ：リングをヒーロー文章ブロックの下に配置 */
-.hero .ring3d{
-  position:relative; z-index:2; pointer-events:none;
-  width:clamp(180px,52vw,240px); aspect-ratio:1;
-  margin:clamp(18px,5vw,34px) auto 0;
 }
 .group .role .badge{ font-family:var(--serif); color:var(--gold-deep); letter-spacing:.2em; font-size:10.5px; }
 .group .role h4{ font-family:var(--serif); color:var(--navy); font-size:clamp(14px,1.7vw,17px); letter-spacing:.06em; margin:6px 0 7px; }
@@ -364,9 +344,6 @@ footer.site .copy{
   .cards{ grid-template-columns:repeat(2,1fr); }
 }
 @media (max-width:860px){
-  /* スマホ：ヒーローを縦並びにして文章ブロックの下にリングを置く */
-  .hero{ flex-direction:column; justify-content:center; }
-  .hero__inner{ flex:0 0 auto; }
   .creed__grid{ grid-template-columns:1fr; gap:8px; }
   .creed__item + .creed__item::before{ display:none; }
   .about__cols{ grid-template-columns:1fr; }
