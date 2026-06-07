@@ -284,9 +284,9 @@ header.site.nav-open .nav-toggle span:nth-child(3){ transform:translateY(-8px) r
 .philosophy .sec-head .ja{ color:var(--navy); }
 .philosophy .sec-head .en{ color:var(--gold-deep); }
 .philosophy .body{
-  max-width:560px; margin:0 auto; text-align:center;
+  max-width:34em; margin:0 auto; text-align:left;
   font-family:var(--serif); font-weight:500;
-  font-size:clamp(14px,1.8vw,17px); line-height:2.1; letter-spacing:.05em;
+  font-size:clamp(14px,1.8vw,17px); line-height:2.05; letter-spacing:.05em;
   color:var(--ink);
 }
 .philosophy .body em{ font-style:normal; color:var(--gold-deep); }
@@ -381,9 +381,10 @@ footer.site .copy{
   .timeline::before{ left:14px; }
   .phase{ padding-left:46px; }
   .phase .dot{ left:5px; }
-  footer.site .f-info{ grid-template-columns:1fr; row-gap:0; }
-  footer.site .f-info .row{ flex-direction:column; gap:0; }
-  footer.site .f-info dt{ flex-basis:auto; }
+  /* スマホ：項目ごとに1行（ラベル＋値を続けて表示） */
+  footer.site .f-info{ grid-template-columns:1fr; row-gap:8px; justify-content:start; }
+  footer.site .f-info .row{ flex-direction:row; gap:8px; }
+  footer.site .f-info dt{ flex:0 0 3.5em; }
 }
 
 @media (prefers-reduced-motion:reduce){
