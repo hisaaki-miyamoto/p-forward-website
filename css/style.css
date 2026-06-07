@@ -150,22 +150,14 @@ header.site.nav-open .nav-toggle span:nth-child(3){ transform:translateY(-8px) r
   opacity:0; animation:fadeUp 1.3s ease 1.05s forwards;
 }
 .hero__scroll{
-  position:absolute; left:50%; bottom:34px; transform:translateX(-50%);
-  z-index:2; font-size:10px; letter-spacing:.3em; color:rgba(255,255,255,.7);
+  position:absolute; left:0; right:0; bottom:34px;
+  z-index:2; font-size:10px; color:rgba(255,255,255,.7);
   display:flex; flex-direction:column; align-items:center; gap:10px;
   opacity:0; animation:fadeUp 1.2s ease 1.5s forwards;
 }
+/* 字間（letter-spacing）の末尾余白を相殺して文字を正確に中央へ */
+.hero__scroll span{ letter-spacing:.3em; margin-right:-.3em; }
 .hero__scroll i{ width:1px; height:46px; background:rgba(255,255,255,.5); animation:scrollLine 2.2s ease-in-out infinite; transform-origin:top; }
-
-/* ============ 3Dガラストーラス（WebGL / Three.js） ============ */
-.hero__spinner{
-  position:absolute; left:50%; top:50%; transform:translate(-50%, -50%);
-  z-index:1; pointer-events:none;
-  width:clamp(360px, 60vw, 720px); aspect-ratio:1;
-}
-.hero__spinner .torus-gl{
-  width:100%; height:100%; display:block;
-}
 
 @keyframes scrollLine{ 0%{transform:scaleY(0)} 50%{transform:scaleY(1)} 100%{transform:scaleY(0); transform-origin:bottom} }
 @keyframes fadeUp{ from{opacity:0; transform:translateY(22px)} to{opacity:1; transform:translateY(0)} }
@@ -240,8 +232,46 @@ header.site.nav-open .nav-toggle span:nth-child(3){ transform:translateY(-8px) r
 
 /* ── グループ内での役割 ── */
 .group{ }
-.group .roles{ display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(16px,2.4vw,28px); margin-top:clamp(36px,5vw,56px); }
-.group .role{ text-align:center; padding:clamp(24px,2.6vw,34px) 14px; border:1px solid var(--line); border-radius:4px; background:#fff; }
+/* 三角形配置：②を中央上、①③を下段左右に。中央に連結線とリングを重ねる */
+.group .roles{
+  position:relative;
+  display:grid; grid-template-columns:repeat(2, minmax(0,1fr));
+  gap:clamp(150px,16vw,200px);                /* 縦横の間隔＝中央スペース（リングが収まる大きさ） */
+  max-width:780px; margin:clamp(36px,5vw,56px) auto 0;
+}
+.group .role.self{
+  grid-row:1; grid-column:1 / -1;
+  width:calc(50% - clamp(75px,8vw,100px));    /* 下段カードと同じ幅で頂点に */
+  justify-self:center;
+}
+.group .role:first-child{ grid-row:2; grid-column:1; }   /* ① 左下 */
+.group .role:last-child{ grid-row:2; grid-column:2; }     /* ③ 右下 */
+/* カードを正方形に・内容を中央寄せ */
+.group .role{
+  position:relative; z-index:1;
+  aspect-ratio:1; display:flex; flex-direction:column; justify-content:center;
+  text-align:center; padding:clamp(18px,2.2vw,30px) 14px;
+  border:1px solid var(--line); border-radius:4px; background:#fff;
+}
+/* 3枠を結ぶ連結線（カードの背面に置き、隙間部分だけ見える） */
+.group .roles__links{
+  position:absolute; inset:0; z-index:0; width:100%; height:100%;
+  pointer-events:none; overflow:visible;
+}
+.group .roles__links line{ stroke:var(--gold); stroke-width:1.4; opacity:.7; }
+/* 中央スペースに収まる3Dリング（位置はJSで重心へ） */
+.group .ring3d{
+  position:absolute; z-index:2; pointer-events:none;
+  width:clamp(120px,13vw,170px); aspect-ratio:1;   /* 中央スペースより一回り小さく */
+  left:50%; top:50%; transform:translate(-50%,-50%);
+}
+.ring3d .torus-gl{ width:100%; height:100%; display:block; }
+/* スマホ：リングをヒーロー文章ブロックの下に配置 */
+.hero .ring3d{
+  position:relative; z-index:2; pointer-events:none;
+  width:clamp(180px,52vw,240px); aspect-ratio:1;
+  margin:clamp(18px,5vw,34px) auto 0;
+}
 .group .role .badge{ font-family:var(--serif); color:var(--gold-deep); letter-spacing:.2em; font-size:12px; }
 .group .role h4{ font-family:var(--serif); color:var(--navy); font-size:clamp(17px,2vw,21px); letter-spacing:.06em; margin:10px 0 12px; }
 .group .role p{ font-size:13.5px; color:var(--muted); font-weight:300; }
@@ -250,40 +280,46 @@ header.site.nav-open .nav-toggle span:nth-child(3){ transform:translateY(-8px) r
 .group .role.self h4{ color:#fff; }
 .group .role.self p{ color:rgba(255,255,255,.78); }
 
-/* ── 想い（フルワイドの帯） ── */
-.philosophy{ background:var(--navy); color:#fff; position:relative; overflow:hidden; }
+/* ── 想い（フルワイドの帯：白基調） ── */
+.philosophy{ background:var(--paper); color:var(--ink); position:relative; overflow:hidden; }
 .philosophy::before{
   content:""; position:absolute; inset:0;
-  background:radial-gradient(80% 120% at 80% 0%, rgba(197,168,128,.16) 0%, transparent 60%);
+  background:radial-gradient(80% 120% at 80% 0%, rgba(197,168,128,.10) 0%, transparent 60%);
 }
 .philosophy .wrap{ position:relative; z-index:1; }
-.philosophy .sec-head .ja{ color:#fff; }
-.philosophy .sec-head .en{ color:var(--gold-soft); }
+.philosophy .sec-head .ja{ color:var(--navy); }
+.philosophy .sec-head .en{ color:var(--gold-deep); }
 .philosophy .body{
   max-width:800px; margin:0 auto; text-align:center;
   font-family:var(--serif); font-weight:500;
   font-size:clamp(17px,2.1vw,22px); line-height:2.2; letter-spacing:.05em;
-  color:rgba(255,255,255,.94);
+  color:var(--ink);
 }
-.philosophy .body em{ font-style:normal; color:var(--gold-soft); }
-.philosophy .sign{ margin-top:48px; text-align:center; letter-spacing:.3em; font-size:13px; color:rgba(255,255,255,.7); }
-.philosophy .sign strong{ font-family:var(--serif); font-weight:700; color:#fff; letter-spacing:.18em; }
+.philosophy .body em{ font-style:normal; color:var(--gold-deep); }
+.philosophy .sign{ margin-top:48px; text-align:center; letter-spacing:.3em; font-size:13px; color:var(--muted); }
+.philosophy .sign strong{ font-family:var(--serif); font-weight:700; color:var(--navy); letter-spacing:.18em; }
 
-/* ============ フッター ============ */
-footer.site{ background:var(--navy-2); color:rgba(255,255,255,.82); padding:clamp(56px,7vw,80px) clamp(20px,5vw,40px) 32px; }
-footer.site .wrap{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:40px; }
-footer.site .f-brand .logo{ font-family:var(--serif); font-weight:700; font-size:24px; letter-spacing:.16em; color:#fff; }
-footer.site .f-brand .logo span{ color:var(--gold-soft); }
-footer.site .f-brand .tagline{ margin-top:8px; font-size:10px; letter-spacing:.32em; color:rgba(255,255,255,.5); }
-footer.site .f-brand .tag{ margin-top:16px; font-size:13px; letter-spacing:.12em; color:rgba(255,255,255,.62); font-weight:300; }
-footer.site .f-info{ font-size:14px; font-weight:300; line-height:2.2; }
-footer.site .f-info .row{ display:flex; gap:14px; }
-footer.site .f-info dt{ flex:0 0 4.5em; color:var(--gold-soft); letter-spacing:.1em; }
-footer.site .f-info a:hover{ color:#fff; text-decoration:underline; }
+/* ============ フッター（ベージュ／生成り白基調） ============ */
+footer.site{ background:var(--paper-soft); color:var(--muted); padding:clamp(56px,7vw,80px) clamp(20px,5vw,40px) 32px; border-top:1px solid var(--line); }
+footer.site .wrap{ display:flex; justify-content:center; }
+/* 会社情報を2段組（2列×2段）で中央に */
+footer.site .f-info{
+  display:grid; grid-template-columns:repeat(2, auto);
+  column-gap:clamp(40px,7vw,100px); row-gap:8px;
+}
+footer.site .f-brand .logo{ font-family:var(--serif); font-weight:700; font-size:24px; letter-spacing:.16em; color:var(--navy); }
+footer.site .f-brand .logo span{ color:var(--gold-deep); }
+footer.site .f-brand .tagline{ margin-top:8px; font-size:10px; letter-spacing:.32em; color:var(--gold-deep); }
+footer.site .f-brand .tag{ margin-top:16px; font-size:13px; letter-spacing:.12em; color:var(--muted); font-weight:300; }
+footer.site .f-info .row{ display:flex; gap:14px; font-size:14px; font-weight:300; line-height:2.2; }
+footer.site .f-info dt{ flex:0 0 4.5em; color:var(--gold-deep); letter-spacing:.1em; }
+footer.site .f-info dd{ color:var(--ink); }
+footer.site .f-info a{ color:var(--ink); }
+footer.site .f-info a:hover{ color:var(--navy); text-decoration:underline; }
 footer.site .copy{
   max-width:var(--maxw); margin:48px auto 0; padding-top:24px;
-  border-top:1px solid rgba(255,255,255,.12);
-  text-align:center; font-size:12px; letter-spacing:.18em; color:rgba(255,255,255,.55);
+  border-top:1px solid var(--line);
+  text-align:center; font-size:12px; letter-spacing:.18em; color:var(--muted);
 }
 
 /* ============ ページトップボタン ============ */
@@ -310,10 +346,17 @@ footer.site .copy{
   .cards{ grid-template-columns:repeat(2,1fr); }
 }
 @media (max-width:860px){
+  /* スマホ：ヒーローを縦並びにして文章ブロックの下にリングを置く */
+  .hero{ flex-direction:column; justify-content:center; }
+  .hero__inner{ flex:0 0 auto; }
   .creed__grid{ grid-template-columns:1fr; gap:8px; }
   .creed__item + .creed__item::before{ display:none; }
   .about__cols{ grid-template-columns:1fr; }
-  .group .roles{ grid-template-columns:1fr; }
+  .group .roles{ grid-template-columns:1fr; gap:clamp(16px,4vw,24px); max-width:420px; }
+  .group .role.self,
+  .group .role:first-child,
+  .group .role:last-child{ grid-row:auto; grid-column:auto; width:auto; justify-self:stretch; }
+  .group .role{ aspect-ratio:auto; }   /* モバイルは正方形を解除して高さ自動 */
 }
 
 /* モバイル：ハンバーガー＋ドロワーメニュー */
@@ -345,6 +388,7 @@ footer.site .copy{
   .timeline::before{ left:14px; }
   .phase{ padding-left:46px; }
   .phase .dot{ left:5px; }
+  footer.site .f-info{ grid-template-columns:1fr; row-gap:0; }
   footer.site .f-info .row{ flex-direction:column; gap:0; }
   footer.site .f-info dt{ flex-basis:auto; }
 }

@@ -103,18 +103,13 @@
     <div class="hero__slide s3"></div>
   </div>
 
-  <!-- 3Dガラストーラス（WebGL / Three.js） -->
-  <div class="hero__spinner" aria-hidden="true">
-    <canvas class="torus-gl"></canvas>
-  </div>
-
   <div class="hero__inner">
     <p class="hero__eyebrow">P.FORWARD ｜ POWER &amp; PURPOSE</p>
     <h1 class="hero__title">地方から、<br /><span class="accent">日本の未来</span>を動かす。</h1>
-    <p class="hero__sub">地方に、新しい挑戦と熱狂を生み出す。</p>
+    <p class="hero__sub">地方に新しい挑戦と、熱狂を！</p>
   </div>
 
-  <div class="hero__scroll">SCROLL<i></i></div>
+  <div class="hero__scroll"><span>SCROLL</span><i></i></div>
 </section>
 
 <!-- ============ 経営理念（MISSION / VISION） ============ -->
@@ -237,6 +232,10 @@
       基盤を支える <b>丸近</b>、世界へ挑む <b>KANIZA</b> とともに、「地方から、世界へ。」を目指します。
     </p>
     <div class="roles">
+      <!-- 3枠を結ぶ連結線（JSで座標を計算して描画） -->
+      <svg class="roles__links" aria-hidden="true" preserveAspectRatio="none"></svg>
+      <!-- 中央スペースに収まる 3Dガラスリング（WebGL/Three.js） -->
+      <div class="ring3d" aria-hidden="true"><canvas class="torus-gl"></canvas></div>
       <div class="role reveal">
         <span class="badge">GROUP ①</span>
         <h4>株式会社 丸近</h4>
@@ -273,18 +272,12 @@
       香住という地方から、日本を代表するブランドを創る。<br />
       それが、私たちの挑戦です。
     </p>
-    <p class="sign reveal">株式会社 P<strong>.</strong>FORWARD ／ 丸近グループ</p>
   </div>
 </section>
 
 <!-- ============ フッター ============ -->
 <footer class="site" id="contact">
   <div class="wrap">
-    <div class="f-brand">
-      <div class="logo">P<span>.</span>FORWARD</div>
-      <div class="tagline">POWER &amp; PURPOSE</div>
-      <p class="tag">地方から、日本の未来を動かす。</p>
-    </div>
     <dl class="f-info">
       <div class="row"><dt>社名</dt><dd>株式会社 P.FORWARD</dd></div>
       <div class="row"><dt>住所</dt><dd>〒669-6544　兵庫県美方郡香美町香住区香住4</dd></div>
