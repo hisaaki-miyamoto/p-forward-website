@@ -107,6 +107,8 @@ header.site.nav-open .nav-toggle span:nth-child(3){ transform:translateY(-8px) r
   overflow:hidden; text-align:center; color:#fff;
 }
 .hero__slides{ position:absolute; inset:0; z-index:0; }
+/* 海の泡（写真の上・文字カードの下） */
+.hero__bubbles{ position:absolute; inset:0; z-index:1; pointer-events:none; }
 .hero__slide{
   position:absolute; inset:0;
   background-size:cover; background-position:center;
