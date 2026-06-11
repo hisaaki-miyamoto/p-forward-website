@@ -106,9 +106,12 @@ header.site.nav-open .nav-toggle span:nth-child(3){ transform:translateY(-8px) r
   display:flex; align-items:center; justify-content:center;
   text-align:center; color:#fff;
 }
-.hero__slides{ position:fixed; inset:0; z-index:-1; }
+.hero__slides{ position:fixed; inset:0; z-index:-2; }
 /* 海の泡（写真の上・文字カードの下） */
 .hero__bubbles{ position:absolute; inset:0; z-index:1; pointer-events:none; }
+@media (min-width: 1025px) {
+  .hero__bubbles{ position:fixed; z-index:-1; }
+}
 .hero__slide{
   position:absolute; inset:0;
   background-size:cover; background-position:center;
