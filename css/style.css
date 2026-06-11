@@ -26,7 +26,7 @@ html{ scroll-behavior:smooth; }
 body{
   font-family:var(--sans);
   color:var(--ink);
-  background:var(--paper);
+  background:transparent;
   line-height:1.9;
   -webkit-font-smoothing:antialiased;
   letter-spacing:.02em;
@@ -181,6 +181,13 @@ header.site.nav-open .nav-toggle span:nth-child(3){ transform:translateY(-8px) r
 @keyframes fadeUp{ from{opacity:0; transform:translateY(22px)} to{opacity:1; transform:translateY(0)} }
 
 /* ============ 共通セクション ============ */
+.content-wrapper {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  background: var(--paper-soft);
+  box-shadow: 0 0 40px rgba(0,0,0,0.15);
+}
 .section{ padding:clamp(72px,11vw,140px) clamp(20px,5vw,40px); }
 .wrap{ max-width:var(--maxw); margin:0 auto; }
 .sec-head{ text-align:center; margin-bottom:clamp(44px,7vw,80px); }
