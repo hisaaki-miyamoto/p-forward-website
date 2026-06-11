@@ -308,7 +308,13 @@ header.site.nav-open .nav-toggle span:nth-child(3){ transform:translateY(-8px) r
 .philosophy .sign strong{ font-family:var(--serif); font-weight:700; color:var(--navy); letter-spacing:.18em; }
 
 /* ============ フッター（ベージュ／生成り白基調） ============ */
-footer.site{ background:var(--paper-soft); color:var(--muted); padding:clamp(56px,7vw,80px) clamp(20px,5vw,40px) 32px; border-top:1px solid var(--line); }
+footer.site{ 
+  background:rgba(255,255,255,.95); 
+  backdrop-filter:saturate(140%) blur(8px); 
+  color:var(--muted); 
+  padding:32px clamp(20px,5vw,40px) 24px; 
+  border-top:1px solid var(--line); 
+}
 footer.site .wrap{ display:flex; justify-content:center; }
 /* 会社情報を2段組（2列×2段）で中央に */
 footer.site .f-info{
@@ -325,7 +331,7 @@ footer.site .f-info dd{ color:var(--ink); }
 footer.site .f-info a{ color:var(--ink); }
 footer.site .f-info a:hover{ color:var(--navy); text-decoration:underline; }
 footer.site .copy{
-  max-width:var(--maxw); margin:36px auto 0; padding-top:20px;
+  max-width:var(--maxw); margin:20px auto 0; padding-top:16px;
   border-top:1px solid var(--line);
   text-align:center; font-size:11px; letter-spacing:.18em; color:var(--muted);
 }
