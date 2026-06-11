@@ -367,6 +367,52 @@ header.site.nav-open .nav-toggle span:nth-child(3){ transform:translateY(-8px) r
 .btn--ghost{ border:1px solid rgba(255,255,255,.45); color:#fff; }
 .btn--ghost:hover{ border-color:var(--gold-soft); color:var(--gold-soft); transform:translateY(-3px); }
 
+/* ── お問い合わせフォーム（contact.html） ── */
+.page-form{ background:var(--paper-soft); }
+/* 簡易ヘッダーページなので本文をヘッダー下に送る */
+.page-form .content-wrapper{ padding-top:clamp(78px,11vw,104px); }
+.formsec{ background:var(--paper-soft); }
+.form__lead{
+  max-width:34em; margin:0 auto clamp(30px,5vw,44px); text-align:center;
+  font-size:clamp(13px,1.6vw,15px); color:var(--muted); font-weight:300; line-height:1.95;
+}
+.form__note{ display:inline-block; margin-top:8px; font-size:12px; color:var(--gold-deep); letter-spacing:.04em; }
+
+.cform{ max-width:34em; margin:0 auto; }
+.cform__row{ margin-bottom:clamp(18px,2.6vw,24px); }
+.cform__row label{
+  display:block; margin-bottom:8px;
+  font-size:12.5px; letter-spacing:.08em; color:var(--navy); font-weight:500;
+}
+.cform__row .req{ color:var(--gold-deep); font-weight:700; margin-left:2px; }
+.cform input,
+.cform textarea{
+  width:100%; font-family:var(--sans); font-size:14px; color:var(--ink);
+  background:#fff; border:1px solid var(--line); border-radius:6px;
+  padding:13px 15px; line-height:1.7; letter-spacing:.02em;
+  transition:border-color .3s ease, box-shadow .3s ease;
+  -webkit-appearance:none; appearance:none;
+}
+.cform input::placeholder,
+.cform textarea::placeholder{ color:#9aa4ad; }
+.cform input:focus,
+.cform textarea:focus{
+  outline:none; border-color:var(--gold);
+  box-shadow:0 0 0 3px rgba(197,168,128,.18);
+}
+.cform textarea{ resize:vertical; min-height:140px; }
+/* スパム対策のハニーポット（人間には非表示） */
+.cform__gotcha{ position:absolute; left:-9999px; width:1px; height:1px; opacity:0; pointer-events:none; }
+.cform__submit{ text-align:center; margin-top:clamp(26px,4vw,36px); }
+.cform__submit .btn{ min-width:200px; }
+.cform__submit .btn:disabled{ opacity:.5; cursor:default; transform:none; }
+.cform__status{
+  margin-top:18px; text-align:center; font-size:13px; line-height:1.8;
+  letter-spacing:.03em; min-height:1.2em;
+}
+.cform__status.is-success{ color:#1d7a4d; }
+.cform__status.is-error{ color:#b5453b; }
+
 /* ============ フッター（ベージュ／生成り白基調） ============ */
 footer.site{ 
   background:rgba(255,255,255,.95); 
