@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>お問い合わせ｜株式会社 P.FORWARD</title>
+<meta name="description" content="株式会社 P.FORWARD へのお問い合わせフォーム。事業のご相談、取材・メディア掲載、採用、協業・出店のご相談など、お気軽にお問い合わせください。" />
+
+<!-- ============ ファビコン ============ -->
+<link rel="icon" href="images/favicon.ico" sizes="any" />
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="images/favicon.png" />
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+
+<!-- ============ SEO ============ -->
+<meta name="robots" content="noindex, follow" />
+<link rel="canonical" href="https://p.forward.mrck.jp/contact.html" />
+
+<!-- ============ セキュリティ ============ -->
+<meta http-equiv="X-Content-Type-Options" content="nosniff" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+<!-- フォーム送信先として Formspree を許可（frame-ancestors でクリックジャッキング防止） -->
+<meta http-equiv="Content-Security-Policy"
+  content="default-src 'self';
+           base-uri 'self';
+           object-src 'none';
+           frame-ancestors 'none';
+           form-action 'self' https://formspree.io;
+           style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+           font-src 'self' https://fonts.gstatic.com;
+           img-src 'self' data: blob:;
+           script-src 'self';
+           connect-src 'self' https://formspree.io;" />
+<meta name="format-detection" content="telephone=no" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="page-form">
+
+<!-- ============ ヘッダー（簡易：ロゴでトップへ戻る） ============ -->
+<header class="site scrolled" id="header">
+  <div class="brand">
+    <a href="index.html"><img src="images/logo.png" alt="株式会社 P.FORWARD" class="brand-logo" width="339" height="300" decoding="async" /></a>
+    <span class="tagline">- POWER &amp; PURPOSE -</span>
+  </div>
+  <nav id="primaryNav">
+    <a href="index.html#creed">理念</a>
+    <a href="index.html#direction">事業</a>
+    <a href="index.html#message">代表挨拶</a>
+    <a href="index.html">トップへ戻る</a>
+  </nav>
+</header>
+
+<!-- ============ お問い合わせフォーム ============ -->
+<main class="content-wrapper">
+<section class="section formsec" id="form">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="en">CONTACT</span>
+      <h2 class="ja">お問い合わせ</h2>
+    </div>
+    <p class="form__lead reveal">
+      事業のご相談、取材・メディア掲載、採用、協業・出店のご相談など、下記フォームよりお気軽にお問い合わせください。<br />
+      <span class="form__note">＊ は必須項目です。担当より追ってご連絡いたします。</span>
+    </p>
+
+    <form class="cform reveal" id="contactForm" action="https://formspree.io/f/xkoaqreg" method="POST">
+      <div class="cform__row">
+        <label for="f-name">お名前 <span class="req">＊</span></label>
+        <input type="text" id="f-name" name="name" autocomplete="name" required placeholder="山田 太郎" />
+      </div>
+      <div class="cform__row">
+        <label for="f-company">会社名・団体名</label>
+        <input type="text" id="f-company" name="company" autocomplete="organization" placeholder="株式会社○○" />
+      </div>
+      <div class="cform__row">
+        <label for="f-email">メールアドレス <span class="req">＊</span></label>
+        <input type="email" id="f-email" name="email" autocomplete="email" required placeholder="example@example.com" />
+      </div>
+      <div class="cform__row">
+        <label for="f-message">お問い合わせ内容 <span class="req">＊</span></label>
+        <textarea id="f-message" name="message" rows="7" required placeholder="お問い合わせ内容をご記入ください。"></textarea>
+      </div>
+
+      <!-- Formspree 設定：件名・スパム対策（honeypot） -->
+      <input type="hidden" name="_subject" value="【公式サイト】お問い合わせ" />
+      <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" class="cform__gotcha" />
+
+      <div class="cform__submit">
+        <button type="submit" class="btn btn--primary" id="formSubmit">送信する</button>
+      </div>
+
+      <p class="cform__status" id="formStatus" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+</main>
+
+<!-- ============ フッター ============ -->
+<footer class="site" id="company">
+  <div class="wrap">
+    <dl class="f-info">
+      <div class="row"><dt>社名</dt><dd>株式会社 P.FORWARD</dd></div>
+      <div class="row"><dt>住所</dt><dd>〒669-6544　兵庫県美方郡香美町香住区香住4</dd></div>
+      <div class="row"><dt>TEL</dt><dd><a href="tel:0796-36-1339">0796-36-1339</a></dd></div>
+      <div class="row"><dt>Mail</dt><dd><a href="mailto:p.forward.2005@gmail.com">p.forward.2005@gmail.com</a></dd></div>
+    </dl>
+  </div>
+  <p class="copy">© 2026　株式会社 P.FORWARD</p>
+</footer>
+
+<script src="js/contact.js"></script>
+</body>
+</html>
