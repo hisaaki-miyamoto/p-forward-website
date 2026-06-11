@@ -52,7 +52,20 @@
   },
   "telephone": "0796-36-1339",
   "email": "p.forward.2005@gmail.com",
-  "areaServed": "JP"
+  "areaServed": "JP",
+  "founder": {
+    "@type": "Person",
+    "name": "上垣 匡智",
+    "jobTitle": "代表取締役社長"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+81-796-36-1339",
+    "email": "p.forward.2005@gmail.com",
+    "contactType": "customer service",
+    "areaServed": "JP",
+    "availableLanguage": ["Japanese"]
+  }
 }
 </script>
 
@@ -64,8 +77,13 @@
 <!-- リファラ情報の制限（外部サイトへの情報漏洩防止） -->
 <meta name="referrer" content="strict-origin-when-cross-origin" />
 <!-- コンテンツセキュリティポリシー（XSS・不正スクリプト対策） -->
+<!-- frame-ancestors でクリックジャッキングを防止（metaでも有効。X-Frame-Optionsはmetaでは効かないため、こちらで担保） -->
 <meta http-equiv="Content-Security-Policy"
   content="default-src 'self';
+           base-uri 'self';
+           object-src 'none';
+           frame-ancestors 'none';
+           form-action 'self';
            style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
            font-src 'self' https://fonts.gstatic.com;
            img-src 'self' data: blob:;
@@ -85,7 +103,7 @@
 <!-- ============ ヘッダー ============ -->
 <header class="site" id="header">
   <div class="brand">
-    <a href="#top"><img src="images/logo.png" alt="P.FORWARD" class="brand-logo" /></a>
+    <a href="#top"><img src="images/logo.png" alt="株式会社 P.FORWARD" class="brand-logo" width="339" height="300" decoding="async" fetchpriority="high" /></a>
     <span class="tagline">- POWER &amp; PURPOSE -</span>
   </div>
   <button class="nav-toggle" id="navToggle" aria-label="メニューを開く" aria-expanded="false" aria-controls="primaryNav">
@@ -94,9 +112,10 @@
   <nav id="primaryNav">
     <a href="#creed">理念</a>
     <a href="#about">概要</a>
-    <a href="#direction">方向性</a>
+    <a href="#direction">事業</a>
     <a href="#thought">想い</a>
-    <a href="#contact">会社情報</a>
+    <a href="#message">代表挨拶</a>
+    <a href="#contact">お問い合わせ</a>
   </nav>
 </header>
 
@@ -269,10 +288,45 @@
     </p>
   </div>
 </section>
+
+<!-- ============ 代表メッセージ ============ -->
+<section class="section message" id="message">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="en">MESSAGE</span>
+      <h2 class="ja">代表挨拶</h2>
+    </div>
+    <p class="message__catch reveal">「地方だから、できない」を、終わらせる。</p>
+    <div class="message__body reveal">
+      <p>私たちが拠点を置く香住・但馬には、世界に誇れる食と自然、そして人の営みがあります。一方で、人口減少や産業の縮小といった、地方が直面する現実もあります。</p>
+      <p>それでも私は、この地から挑戦したい。守りに入るのではなく、攻め続ける。商品を売る会社ではなく、<em>地域の未来を創る会社</em>でありたい。</p>
+      <p>香住ガニをはじめとする地域の価値を、体験へ、観光へ、ブランドへと磨き上げ、地方から世界へ。人を呼び、雇用を生み、この地に誇りと熱狂を取り戻す——それが、P.FORWARD の使命です。</p>
+      <p>地方から、日本の未来を動かす。その一歩を、ここから。</p>
+    </div>
+    <p class="message__sign reveal">株式会社 P.FORWARD　代表取締役社長<br /><strong>上垣 匡智</strong></p>
+  </div>
+</section>
+
+<!-- ============ お問い合わせ（CTA） ============ -->
+<section class="section contact" id="contact">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="en">CONTACT</span>
+      <h2 class="ja">お問い合わせ</h2>
+    </div>
+    <p class="contact__lead reveal">
+      事業のご相談、取材・メディア掲載、採用、協業・出店のご相談など、お気軽にお問い合わせください。
+    </p>
+    <div class="contact__actions reveal">
+      <a class="btn btn--primary" href="mailto:p.forward.2005@gmail.com">メールで問い合わせる</a>
+      <a class="btn btn--ghost" href="tel:0796-36-1339">電話する（0796-36-1339）</a>
+    </div>
+  </div>
+</section>
 </div>
 
 <!-- ============ フッター ============ -->
-<footer class="site" id="contact">
+<footer class="site" id="company">
   <div class="wrap">
     <dl class="f-info">
       <div class="row"><dt>社名</dt><dd>株式会社 P.FORWARD</dd></div>

@@ -202,6 +202,12 @@ header.site.nav-open .nav-toggle span:nth-child(3){ transform:translateY(-8px) r
   font-family:var(--serif); font-weight:600;
   font-size:clamp(20px,2.6vw,28px); letter-spacing:.08em; color:var(--navy);
 }
+/* 見出し下の金の細いディバイダ（上質感） */
+.sec-head .ja::after{
+  content:""; display:block; width:34px; height:2px; margin:18px auto 0;
+  background:linear-gradient(90deg, var(--gold-deep), var(--gold-soft));
+  border-radius:2px;
+}
 .lead{
   max-width:34em; margin:0 auto; text-align:left;
   font-size:clamp(12.5px,1.5vw,14px); color:var(--muted); font-weight:300; line-height:1.95;
@@ -261,7 +267,6 @@ header.site.nav-open .nav-toggle span:nth-child(3){ transform:translateY(-8px) r
 .phase p{ font-size:12.5px; color:var(--muted); font-weight:300; }
 
 /* ── グループ内での役割 ── */
-.group{ }
 /* 三角形配置：②を中央上、①③を下段左右に。中央に連結線とリングを重ねる */
 .group .roles{
   position:relative;
@@ -307,8 +312,60 @@ header.site.nav-open .nav-toggle span:nth-child(3){ transform:translateY(-8px) r
   color:var(--ink);
 }
 .philosophy .body em{ font-style:normal; color:var(--gold-deep); }
-.philosophy .sign{ margin-top:48px; text-align:center; letter-spacing:.3em; font-size:13px; color:var(--muted); }
-.philosophy .sign strong{ font-family:var(--serif); font-weight:700; color:var(--navy); letter-spacing:.18em; }
+
+/* ── 代表メッセージ ── */
+.message{ background:var(--paper-soft); }
+.message__catch{
+  font-family:var(--serif); font-weight:700; color:var(--navy);
+  text-align:center; font-size:clamp(17px,2.4vw,24px); line-height:1.6;
+  letter-spacing:.04em; margin-bottom:clamp(28px,4vw,40px);
+}
+.message__body{ max-width:34em; margin:0 auto; }
+.message__body p{
+  font-size:clamp(13px,1.6vw,15px); color:var(--ink); font-weight:300;
+  line-height:2.05; letter-spacing:.04em; margin-bottom:1.1em;
+}
+.message__body em{ font-style:normal; font-weight:500; color:var(--gold-deep); }
+.message__sign{
+  max-width:34em; margin:clamp(26px,4vw,36px) auto 0; text-align:right;
+  font-size:12px; color:var(--muted); letter-spacing:.12em; line-height:1.9;
+}
+.message__sign strong{
+  display:inline-block; margin-top:4px;
+  font-family:var(--serif); font-weight:700; color:var(--navy);
+  font-size:clamp(16px,2vw,19px); letter-spacing:.18em;
+}
+
+/* ── お問い合わせ（CTA） ── */
+.contact{ background:var(--navy); position:relative; overflow:hidden; }
+.contact::before{
+  content:""; position:absolute; inset:0;
+  background:radial-gradient(70% 120% at 50% -10%, rgba(197,168,128,.16) 0%, transparent 60%);
+}
+.contact .wrap{ position:relative; z-index:1; }
+.contact .sec-head .en{ color:var(--gold-soft); }
+.contact .sec-head .ja{ color:#fff; }
+.contact .sec-head .ja::after{ background:linear-gradient(90deg, var(--gold-soft), var(--gold)); }
+.contact__lead{
+  max-width:30em; margin:0 auto clamp(30px,5vw,42px); text-align:center;
+  font-size:clamp(13px,1.6vw,15px); color:rgba(255,255,255,.82);
+  font-weight:300; line-height:1.95;
+}
+.contact__actions{
+  display:flex; flex-wrap:wrap; gap:14px; justify-content:center;
+}
+.btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  padding:14px 30px; border-radius:6px; font-size:13.5px;
+  letter-spacing:.1em; font-weight:500; transition:transform .3s ease, background .3s ease, color .3s ease, border-color .3s ease, box-shadow .3s ease;
+}
+.btn--primary{
+  background:var(--gold); color:var(--navy);
+  box-shadow:0 10px 30px rgba(197,168,128,.28);
+}
+.btn--primary:hover{ background:var(--gold-soft); transform:translateY(-3px); }
+.btn--ghost{ border:1px solid rgba(255,255,255,.45); color:#fff; }
+.btn--ghost:hover{ border-color:var(--gold-soft); color:var(--gold-soft); transform:translateY(-3px); }
 
 /* ============ フッター（ベージュ／生成り白基調） ============ */
 footer.site{ 
@@ -324,10 +381,6 @@ footer.site .f-info{
   display:grid; grid-template-columns:repeat(2, auto); justify-content:center;
   column-gap:clamp(28px,5vw,64px); row-gap:6px;
 }
-footer.site .f-brand .logo{ font-family:var(--serif); font-weight:700; font-size:24px; letter-spacing:.16em; color:var(--navy); }
-footer.site .f-brand .logo span{ color:var(--gold-deep); }
-footer.site .f-brand .tagline{ margin-top:8px; font-size:10px; letter-spacing:.32em; color:var(--gold-deep); }
-footer.site .f-brand .tag{ margin-top:16px; font-size:13px; letter-spacing:.12em; color:var(--muted); font-weight:300; }
 footer.site .f-info .row{ display:flex; gap:10px; font-size:12px; font-weight:300; line-height:2.0; }
 footer.site .f-info dt{ flex:0 0 4em; color:var(--gold-deep); letter-spacing:.1em; }
 footer.site .f-info dd{ color:var(--ink); }
