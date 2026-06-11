@@ -120,17 +120,22 @@ header.site.nav-open .nav-toggle span:nth-child(3){ transform:translateY(-8px) r
 .hero__slide.s1{
   background-image:
     linear-gradient(180deg, rgba(0,0,0,.18) 0%, rgba(0,0,0,.38) 100%),
-    url("../images/hero-1.jpg");
+    url("../images/IMG01.jpg");
 }
 .hero__slide.s2{
   background-image:
     linear-gradient(180deg, rgba(0,0,0,.18) 0%, rgba(0,0,0,.38) 100%),
-    url("../images/hero-2.jpg");
+    url("../images/IMG02.jpg");
 }
 .hero__slide.s3{
   background-image:
     linear-gradient(180deg, rgba(0,0,0,.18) 0%, rgba(0,0,0,.38) 100%),
-    url("../images/hero-3.jpg");
+    url("../images/IMG03.jpg");
+}
+.hero__slide.s4{
+  background-image:
+    linear-gradient(180deg, rgba(0,0,0,.18) 0%, rgba(0,0,0,.38) 100%),
+    url("../images/IMG04.jpg");
 }
 
 .hero__inner{
