@@ -148,6 +148,37 @@ header.site.nav-open .nav-toggle span:nth-child(3){ transform:translateY(-8px) r
   background-position: center 60%;
 }
 
+/* 海面のゆらめき（擬似シマー）：下半分だけに淡い光のムラをゆっくり漂わせる。
+   画像の海面高さはバラバラなので、幾何学的な歪みではなく“光の濃淡”で水面感を出す。 */
+.hero__water{
+  position:fixed; inset:0; z-index:-1; pointer-events:none;
+  mix-blend-mode:screen;
+  /* 上（空・山）には効かせず、下（海）に向かって徐々に効かせる */
+  -webkit-mask-image:linear-gradient(to bottom, transparent 40%, rgba(0,0,0,.5) 60%, #000 100%);
+          mask-image:linear-gradient(to bottom, transparent 40%, rgba(0,0,0,.5) 60%, #000 100%);
+}
+.hero__water::before,
+.hero__water::after{
+  content:""; position:absolute; inset:-15%;
+  background-repeat:no-repeat;
+  background-image:
+    radial-gradient(60% 40% at 30% 72%, rgba(255,255,255,.13), transparent 60%),
+    radial-gradient(50% 34% at 76% 82%, rgba(255,255,255,.10), transparent 60%);
+  will-change:transform, opacity;
+  animation:waterSway 13s ease-in-out infinite alternate;
+}
+.hero__water::after{
+  background-image:
+    radial-gradient(55% 36% at 62% 76%, rgba(255,255,255,.10), transparent 60%),
+    radial-gradient(46% 30% at 18% 86%, rgba(255,255,255,.08), transparent 60%);
+  animation-duration:19s; animation-delay:-6s;
+}
+@keyframes waterSway{
+  0%   { transform:translate3d(-2%, 0,   0) scaleY(1);    opacity:.65; }
+  50%  { transform:translate3d( 2%, .6%, 0) scaleY(1.05); opacity:1;   }
+  100% { transform:translate3d(-1%,-.4%, 0) scaleY(.97);  opacity:.55; }
+}
+
 .hero__inner{
   position:relative; z-index:2;
   width:clamp(290px,90vw,520px); margin:0 auto;
