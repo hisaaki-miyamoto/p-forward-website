@@ -49,18 +49,6 @@
   <div class="hero__slide s5"></div>
 </div>
 <canvas class="hero__bubbles" aria-hidden="true"></canvas>
-<svg class="hero__water" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-  <filter id="seaShimmer" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
-    <feTurbulence type="fractalNoise" baseFrequency="0.012 0.05" numOctaves="2" seed="6" stitchTiles="stitch" result="n">
-      <animate attributeName="baseFrequency" dur="13s" values="0.012 0.05;0.018 0.064;0.012 0.05" repeatCount="indefinite" />
-      <animate attributeName="seed" dur="38s" values="6;16;6" repeatCount="indefinite" />
-    </feTurbulence>
-    <feComponentTransfer in="n" result="c"><feFuncA type="gamma" amplitude="1" exponent="5" offset="0" /></feComponentTransfer>
-    <feColorMatrix in="c" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.4 -0.28" />
-    <feGaussianBlur stdDeviation="0.7" />
-  </filter>
-  <rect x="0" y="0" width="100%" height="100%" filter="url(#seaShimmer)" />
-</svg>
 
 <!-- ============ ヘッダー（簡易：ロゴでトップへ戻る） ============ -->
 <header class="site scrolled" id="header">
