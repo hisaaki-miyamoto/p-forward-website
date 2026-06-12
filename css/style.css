@@ -149,29 +149,44 @@ header.site.nav-open .nav-toggle span:nth-child(3){ transform:translateY(-8px) r
   position:fixed; inset:0; z-index:-1; pointer-events:none;
   mix-blend-mode:screen;
   /* 上（空・山）には効かせず、下（海）に向かって徐々に効かせる */
-  -webkit-mask-image:linear-gradient(to bottom, transparent 40%, rgba(0,0,0,.5) 60%, #000 100%);
-          mask-image:linear-gradient(to bottom, transparent 40%, rgba(0,0,0,.5) 60%, #000 100%);
+  -webkit-mask-image:linear-gradient(to bottom, transparent 30%, rgba(0,0,0,.6) 50%, #000 100%);
+          mask-image:linear-gradient(to bottom, transparent 30%, rgba(0,0,0,.6) 50%, #000 100%);
 }
 .hero__water::before,
 .hero__water::after{
-  content:""; position:absolute; inset:-15%;
+  content:""; position:absolute; inset:-20%;
   background-repeat:no-repeat;
-  background-image:
-    radial-gradient(60% 40% at 30% 72%, rgba(255,255,255,.13), transparent 60%),
-    radial-gradient(50% 34% at 76% 82%, rgba(255,255,255,.10), transparent 60%);
-  will-change:transform, opacity;
-  animation:waterSway 13s ease-in-out infinite alternate;
+  will-change:transform, opacity, background-position;
 }
+/* ① ふわっと明滅する光のムラ（強め） */
+.hero__water::before{
+  background-image:
+    radial-gradient(58% 42% at 28% 72%, rgba(255,255,255,.30), transparent 60%),
+    radial-gradient(52% 36% at 74% 82%, rgba(255,255,255,.26), transparent 62%),
+    radial-gradient(42% 30% at 50% 92%, rgba(255,255,255,.22), transparent 60%);
+  animation:waterSway 10s ease-in-out infinite alternate;
+}
+/* ② 横に流れる光条で“動き”をはっきり見せる */
 .hero__water::after{
   background-image:
-    radial-gradient(55% 36% at 62% 76%, rgba(255,255,255,.10), transparent 60%),
-    radial-gradient(46% 30% at 18% 86%, rgba(255,255,255,.08), transparent 60%);
-  animation-duration:19s; animation-delay:-6s;
+    repeating-linear-gradient(98deg,
+      rgba(255,255,255,0)   0px,
+      rgba(255,255,255,0)   24px,
+      rgba(255,255,255,.16) 46px,
+      rgba(255,255,255,0)   70px,
+      rgba(255,255,255,0)   96px);
+  background-size:200% 100%;
+  animation:waterFlow 7s linear infinite;
+  opacity:.95;
 }
 @keyframes waterSway{
-  0%   { transform:translate3d(-2%, 0,   0) scaleY(1);    opacity:.65; }
-  50%  { transform:translate3d( 2%, .6%, 0) scaleY(1.05); opacity:1;   }
-  100% { transform:translate3d(-1%,-.4%, 0) scaleY(.97);  opacity:.55; }
+  0%   { transform:translate3d(-4%, 0,   0) scaleY(1);    opacity:.75; }
+  50%  { transform:translate3d( 4%, 1.2%,0) scaleY(1.10); opacity:1;   }
+  100% { transform:translate3d(-2%,-.8%, 0) scaleY(.94);  opacity:.7;  }
+}
+@keyframes waterFlow{
+  from{ background-position:0 0; }
+  to  { background-position:200% 0; }
 }
 
 .hero__inner{
