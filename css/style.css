@@ -368,9 +368,12 @@ header.site.nav-open .nav-toggle span:nth-child(3){ transform:translateY(-8px) r
 .btn--ghost:hover{ border-color:var(--gold-soft); color:var(--gold-soft); transform:translateY(-3px); }
 
 /* ── お問い合わせフォーム（contact.html） ── */
-.page-form{ background:var(--paper-soft); }
+/* 背景はトップと同じ濃紺ベース＋固定写真スライド。中央の白カラムが上に乗る */
+.page-form{ background:var(--navy); }
+/* 泡キャンバスを全幅で固定背景化（トップではPCのみ固定だが、このページは常に固定） */
+.page-form .hero__bubbles{ position:fixed; inset:0; z-index:-1; }
 /* 簡易ヘッダーページなので本文をヘッダー下に送る */
-.page-form .content-wrapper{ padding-top:clamp(78px,11vw,104px); }
+.page-form .content-wrapper{ padding-top:clamp(78px,11vw,104px); min-height:100vh; }
 .formsec{ background:var(--paper-soft); }
 .form__lead{
   max-width:34em; margin:0 auto clamp(30px,5vw,44px); text-align:center;
