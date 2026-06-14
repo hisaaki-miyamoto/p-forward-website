@@ -29,6 +29,10 @@
     primaryNav.querySelectorAll("a").forEach(function (a) {
       a.addEventListener("click", function () { setOpen(false); });
     });
+    /* メニュー外（暗幕）をタップしたら閉じる */
+    primaryNav.addEventListener("click", function (e) {
+      if (e.target === primaryNav) setOpen(false);
+    });
     /* Escキーで閉じる */
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape") setOpen(false);

@@ -5,6 +5,31 @@
 (function () {
   "use strict";
 
+  /* モバイル：ハンバーガーメニューの開閉（index と同じ挙動） */
+  var header = document.getElementById("header");
+  var navToggle = document.getElementById("navToggle");
+  var primaryNav = document.getElementById("primaryNav");
+  if (header && navToggle && primaryNav) {
+    var setNavOpen = function (open) {
+      header.classList.toggle("nav-open", open);
+      navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+      navToggle.setAttribute("aria-label", open ? "メニューを閉じる" : "メニューを開く");
+      document.body.style.overflow = open ? "hidden" : "";
+    };
+    navToggle.addEventListener("click", function () {
+      setNavOpen(!header.classList.contains("nav-open"));
+    });
+    primaryNav.querySelectorAll("a").forEach(function (a) {
+      a.addEventListener("click", function () { setNavOpen(false); });
+    });
+    primaryNav.addEventListener("click", function (e) {
+      if (e.target === primaryNav) setNavOpen(false);
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") setNavOpen(false);
+    });
+  }
+
   var form = document.getElementById("contactForm");
   var status = document.getElementById("formStatus");
   var submit = document.getElementById("formSubmit");

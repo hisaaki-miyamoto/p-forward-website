@@ -72,6 +72,8 @@ header.site nav a::after{
   background:var(--gold); transition:width .4s ease;
 }
 header.site nav a:hover::after{ width:100%; }
+/* PCではラッパーを無効化してリンクを直接フレックス配置（モバイルでのみカード化） */
+.nav-panel{ display:contents; }
 
 header.site.scrolled{
   background:rgba(255,255,255,.95);
@@ -458,6 +460,8 @@ footer.site .copy{
 .pagetop svg{ width:22px; height:22px; }
 .pagetop.show{ opacity:1; visibility:visible; transform:none; }
 .pagetop:hover{ background:var(--gold-deep); }
+/* メニュー展開中はページトップボタンを隠す（重なり防止） */
+header.site.nav-open ~ .pagetop{ opacity:0; visibility:hidden; pointer-events:none; }
 
 /* ============ スクロール表示アニメ ============ */
 .reveal{ opacity:0; transform:translateY(34px); transition:opacity 1s ease, transform 1s ease; }
@@ -484,21 +488,47 @@ footer.site .copy{
   .nav-toggle{ display:flex; }
   .brand .tagline{ display:none; }
 
+  /* nav＝全画面スクリム（暗幕）。スクロール位置に関係なく全体を覆うので切れない＋外側タップで閉じる */
   header.site nav{
     position:fixed; inset:0; z-index:120;
-    flex-direction:column; align-items:center; justify-content:center;
-    gap:clamp(22px,5vh,40px);
-    background:rgba(11,25,44,.97);
-    backdrop-filter:blur(6px);
-    opacity:0; visibility:hidden; transform:translateY(-12px);
-    transition:opacity .45s ease, transform .45s ease, visibility .45s;
+    display:flex; align-items:flex-start; justify-content:flex-end;
+    padding:74px 16px 16px;
+    background:rgba(8,18,32,.55);
+    -webkit-backdrop-filter:blur(3px); backdrop-filter:blur(3px);
+    opacity:0; visibility:hidden;
+    transition:opacity .4s ease, visibility .4s ease;
   }
-  header.site.nav-open nav{ opacity:1; visibility:visible; transform:none; }
+  header.site.nav-open nav{ opacity:1; visibility:visible; }
+  /* 開いている間はヘッダーのすりガラスを解除（fixedの基準を画面全体に戻す＝メニュー切れ対策） */
+  header.site.nav-open{ -webkit-backdrop-filter:none !important; backdrop-filter:none !important; }
 
-  /* スクロール後（白ヘッダー）でもドロワー内のリンクは白で表示 */
+  /* メニュー本体：角丸＋金縁＋濃紺すりガラスのカード（やや小さめ・右上に展開） */
+  .nav-panel{
+    display:flex; flex-direction:column;
+    width:min(74vw, 270px);
+    padding:12px 10px;
+    background:linear-gradient(180deg, rgba(11,25,44,.97), rgba(8,18,32,.97));
+    -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
+    border:1.5px solid var(--gold);
+    border-radius:16px;
+    box-shadow:0 20px 50px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.07);
+    transform:translateY(-10px) scale(.97); opacity:0;
+    transition:transform .42s cubic-bezier(.2,.85,.25,1), opacity .42s ease;
+  }
+  header.site.nav-open .nav-panel{ transform:none; opacity:1; }
+
+  /* リンク：コンパクト・行区切り・金のタップ反応 */
   header.site nav a,
-  header.site.scrolled nav a{ color:#fff; font-size:19px; letter-spacing:.22em; padding:8px 0; }
-  header.site nav a::after{ background:var(--gold-soft); height:1px; }
+  header.site.scrolled nav a{
+    display:block; text-align:center; color:#fff;
+    font-size:15.5px; letter-spacing:.16em; line-height:1.5;
+    padding:13px 10px; border-radius:10px;
+    transition:background .25s ease, color .25s ease;
+  }
+  header.site nav a + a{ border-top:1px solid rgba(197,168,128,.16); }
+  header.site nav a::after{ display:none; }
+  header.site nav a:hover,
+  header.site nav a:active{ background:rgba(197,168,128,.15); color:var(--gold-soft); }
 
   /* スマホでも事業領域カードは2列を維持 */
   .cards{ grid-template-columns:repeat(2,1fr); }
