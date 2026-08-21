@@ -39,6 +39,30 @@
     });
   }
 
+  /* リクルート：RECRUITボタンで「捨てる信念」パネルを開閉 */
+  var rcToggle = document.getElementById("recruitToggle");
+  var rcPanel = document.getElementById("recruitPanel");
+  var rcBack = document.getElementById("recruitBack");
+  if (rcToggle && rcPanel) {
+    var setRecruit = function (open) {
+      rcPanel.hidden = !open;
+      rcToggle.classList.toggle("is-open", open);
+      rcToggle.setAttribute("aria-expanded", open ? "true" : "false");
+      if (!open) {
+        /* 閉じたらボタンまで戻す（画面がいきなり飛ばないように） */
+        rcToggle.focus({ preventScroll: true });
+        var y = rcToggle.getBoundingClientRect().top + window.scrollY - 140;
+        window.scrollTo({ top: Math.max(0, y), behavior: "smooth" });
+      }
+    };
+    rcToggle.addEventListener("click", function () {
+      setRecruit(rcPanel.hidden);
+    });
+    if (rcBack) {
+      rcBack.addEventListener("click", function () { setRecruit(false); });
+    }
+  }
+
   /* ヒーロー：背景スライドのフェード自動切替（6秒ごと・フェード2.4秒） */
   var slides = Array.prototype.slice.call(document.querySelectorAll(".hero__slide"));
   if (slides.length > 1) {
