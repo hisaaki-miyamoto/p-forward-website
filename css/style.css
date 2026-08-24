@@ -683,6 +683,42 @@ header.site.nav-open ~ .pagetop{ opacity:0; visibility:hidden; pointer-events:no
 .reveal{ opacity:0; transform:translateY(34px); transition:opacity 1s ease, transform 1s ease; }
 .reveal.in{ opacity:1; transform:none; }
 
+/* ── SDGs宣言（sdgs.html） ── */
+.page-sdgs{ background:var(--navy); }
+.page-sdgs .hero__bubbles{ position:fixed; inset:0; z-index:-1; }
+.page-sdgs .content-wrapper{ padding-top:clamp(78px,11vw,104px); min-height:100vh; }
+.sdgssec{ background:var(--paper-soft); }
+.sdgs__lead{
+  max-width:34em; margin:0 auto clamp(30px,5vw,44px); text-align:center;
+  font-size:clamp(13px,1.6vw,15px); color:var(--muted); font-weight:300; line-height:1.95;
+}
+.sdgs__goal{
+  display:flex; align-items:center; gap:clamp(16px,3vw,26px);
+  max-width:34em; margin:0 auto clamp(30px,5vw,44px);
+  padding:clamp(20px,3.4vw,28px) clamp(20px,4vw,30px);
+  background:#fff; border:1px solid var(--line); border-radius:10px;
+}
+.sdgs__goal-no{
+  flex:none; width:clamp(52px,7vw,64px); height:clamp(52px,7vw,64px);
+  display:flex; align-items:center; justify-content:center;
+  border-radius:50%; background:var(--navy); color:#fff;
+  font-family:var(--serif); font-weight:700; font-size:clamp(20px,2.6vw,26px);
+}
+.sdgs__goal-text{ font-family:var(--serif); }
+.sdgs__goal-text .en{ display:block; font-size:11px; letter-spacing:.28em; color:var(--gold-deep); margin-bottom:4px; }
+.sdgs__goal-text .ja{ font-size:clamp(15px,2vw,18px); font-weight:700; color:var(--navy); letter-spacing:.03em; }
+.sdgs__body{
+  max-width:34em; margin:0 auto clamp(40px,6vw,56px);
+  font-size:13.5px; color:var(--muted); font-weight:300; line-height:2;
+}
+.sdgs__body p + p{ margin-top:1.4em; }
+.sdgs__sign{
+  max-width:34em; margin:clamp(36px,5vw,48px) auto 0; padding-top:clamp(24px,3.6vw,32px);
+  border-top:1px solid var(--line); text-align:right;
+  font-size:13px; color:var(--navy); letter-spacing:.04em;
+}
+.sdgs__actions{ text-align:center; margin-top:clamp(40px,6vw,56px); }
+
 /* ============ レスポンシブ ============ */
 /* タブレット */
 @media (max-width:1024px){
