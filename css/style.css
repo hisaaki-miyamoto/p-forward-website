@@ -72,6 +72,15 @@ header.site nav a::after{
   background:var(--gold); transition:width .4s ease;
 }
 header.site nav a:hover::after{ width:100%; }
+/* SDGs宣言：ページ内アンカーと違い別ページへ遷移するため、バッジ風に区別する */
+header.site nav a.nav-badge{
+  padding:5px 14px; border:1px solid rgba(255,255,255,.45); border-radius:999px;
+  letter-spacing:.08em; transition:color .4s ease, border-color .4s ease;
+}
+header.site nav a.nav-badge::after{ content:none; }
+header.site nav a.nav-badge:hover{ border-color:var(--gold-soft); color:var(--gold-soft); }
+header.site.scrolled nav a.nav-badge{ border-color:var(--line); }
+header.site.scrolled nav a.nav-badge:hover{ border-color:var(--gold-deep); color:var(--gold-deep); }
 /* PCではラッパーを無効化してリンクを直接フレックス配置（モバイルでのみカード化） */
 .nav-panel{ display:contents; }
 
