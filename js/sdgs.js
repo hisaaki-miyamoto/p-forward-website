@@ -5,8 +5,15 @@
 (function () {
   "use strict";
 
-  /* モバイル：ハンバーガーメニューの開閉（index と同じ挙動） */
+  /* ヘッダー：スクロールで白背景に切替（index と同じ挙動） */
   var header = document.getElementById("header");
+  function onScroll() {
+    header.classList.toggle("scrolled", window.scrollY > 60);
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  /* モバイル：ハンバーガーメニューの開閉（index と同じ挙動） */
   var navToggle = document.getElementById("navToggle");
   var primaryNav = document.getElementById("primaryNav");
   if (header && navToggle && primaryNav) {
@@ -41,10 +48,11 @@
     }, 6000);
   }
 
-  /* 背景：海の泡（トップと同じ。全画面の固定キャンバスとして描画） */
+  /* 背景：海の泡（トップと同じ。ヒーロー内に描画、PCでは固定表示） */
   (function bubbles() {
     var canvas = document.querySelector(".hero__bubbles");
-    if (!canvas) return;
+    var hero = document.querySelector(".hero");
+    if (!canvas || !hero) return;
     if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     var ctx = canvas.getContext("2d");
     var dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -54,7 +62,7 @@
 
     function rnd(a, b) { return a + Math.random() * (b - a); }
     function resize() {
-      W = window.innerWidth; H = window.innerHeight;
+      W = hero.clientWidth; H = hero.clientHeight;
       canvas.width = W * dpr; canvas.height = H * dpr;
       canvas.style.width = W + "px"; canvas.style.height = H + "px";
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -108,12 +116,14 @@
       requestAnimationFrame(frame);
     }
     function setPointer(e) {
-      pointer.x = e.clientX; pointer.y = e.clientY; pointer.active = true;
+      var rect = canvas.getBoundingClientRect();
+      pointer.x = e.clientX - rect.left; pointer.y = e.clientY - rect.top;
+      pointer.active = true;
     }
     resize(); init();
     window.addEventListener("resize", function () { resize(); init(); }, { passive: true });
-    window.addEventListener("mousemove", setPointer, { passive: true });
-    document.addEventListener("mouseleave", function () { pointer.active = false; }, { passive: true });
+    hero.addEventListener("mousemove", setPointer, { passive: true });
+    hero.addEventListener("mouseleave", function () { pointer.active = false; }, { passive: true });
     document.addEventListener("visibilitychange", function () {
       running = !document.hidden;
       if (running) { last = performance.now(); requestAnimationFrame(frame); }

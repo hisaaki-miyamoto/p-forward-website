@@ -693,10 +693,8 @@ header.site.nav-open ~ .pagetop{ opacity:0; visibility:hidden; pointer-events:no
 .reveal.in{ opacity:1; transform:none; }
 
 /* ── SDGs宣言（sdgs.html） ── */
-.page-sdgs{ background:var(--navy); }
-.page-sdgs .hero__bubbles{ position:fixed; inset:0; z-index:-1; }
-.page-sdgs .content-wrapper{ padding-top:clamp(78px,11vw,104px); min-height:100vh; }
-.sdgssec{ background:var(--paper-soft); }
+/* トップページと同じヒーロー構成だが、写真の見せ場は短めでよいので高さだけ縮める */
+.hero--sub{ height:56vh; min-height:420px; }
 .sdgs__lead{
   max-width:34em; margin:0 auto clamp(30px,5vw,44px); text-align:center;
   font-size:clamp(13px,1.6vw,15px); color:var(--muted); font-weight:300; line-height:1.95;

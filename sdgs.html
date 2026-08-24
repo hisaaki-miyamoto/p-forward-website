@@ -49,17 +49,8 @@
 </head>
 <body class="page-sdgs">
 
-<!-- ============ 背景（トップと同じ：写真スライド＋海の泡） ============ -->
-<div class="hero__slides" id="slides" aria-hidden="true">
-  <div class="hero__slide s1 active"></div>
-  <div class="hero__slide s3"></div>
-  <div class="hero__slide s4"></div>
-  <div class="hero__slide s5"></div>
-</div>
-<canvas class="hero__bubbles" aria-hidden="true"></canvas>
-
-<!-- ============ ヘッダー（簡易：ロゴでトップへ戻る） ============ -->
-<header class="site scrolled" id="header">
+<!-- ============ ヘッダー（トップページと同じフルメニュー） ============ -->
+<header class="site" id="header">
   <div class="brand">
     <a href="index.html"><img src="images/logo.png" alt="株式会社 P.FORWARD" class="brand-logo" width="339" height="300" decoding="async" /></a>
     <span class="tagline">- POWER &amp; PURPOSE -</span>
@@ -70,22 +61,35 @@
   <nav id="primaryNav">
     <div class="nav-panel">
       <a href="index.html#creed">理念</a>
+      <a href="index.html#about">概要</a>
       <a href="index.html#direction">事業</a>
+      <a href="index.html#thought">想い</a>
       <a href="index.html#message">代表挨拶</a>
-      <a href="index.html">トップへ戻る</a>
+      <a href="sdgs.html" class="nav-badge" aria-current="page">SDGs宣言</a>
+      <a href="index.html#contact">お問い合わせ</a>
     </div>
   </nav>
 </header>
 
+<!-- ============ ヒーロー（サブページ用の短縮版） ============ -->
+<section class="hero hero--sub">
+  <div class="hero__slides" id="slides">
+    <div class="hero__slide s1 active"></div>
+    <div class="hero__slide s3"></div>
+    <div class="hero__slide s4"></div>
+    <div class="hero__slide s5"></div>
+  </div>
+  <canvas class="hero__bubbles" aria-hidden="true"></canvas>
+  <div class="hero__inner">
+    <p class="hero__eyebrow">P.FORWARD ｜ SDGS DECLARATION</p>
+    <h1 class="hero__title">SDGs宣言</h1>
+  </div>
+</section>
+
 <!-- ============ SDGs宣言 ============ -->
-<main class="content-wrapper">
+<div class="content-wrapper">
 <section class="section sdgssec" id="sdgs">
   <div class="wrap">
-    <div class="sec-head">
-      <span class="en">SDGS DECLARATION</span>
-      <h2 class="ja">SDGs宣言</h2>
-    </div>
-
     <p class="sdgs__lead">
       私たち株式会社 P.FORWARD は、香住ガニを主役とした体験型の飲食事業を通じて、日本海の恵みと香住の漁業文化を次の世代へつなぐことを目指します。
     </p>
@@ -123,7 +127,7 @@
     </div>
   </div>
 </section>
-</main>
+</div>
 
 <!-- ============ フッター ============ -->
 <footer class="site" id="company">
