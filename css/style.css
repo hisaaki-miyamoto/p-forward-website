@@ -798,6 +798,10 @@ header.site.nav-open ~ .pagetop{ opacity:0; visibility:hidden; pointer-events:no
   }
   header.site nav a + a{ border-top:1px solid rgba(197,168,128,.16); }
   header.site nav a::after{ display:none; }
+  /* SDGs宣言バッジ：モバイルのドロワーでは他項目と同じ行スタイルに揃える（PCのみピル表示） */
+  header.site nav a.nav-badge{
+    display:block; padding:13px 10px; border:0; border-radius:10px; letter-spacing:.16em;
+  }
   header.site nav a:hover,
   header.site nav a:active{ background:rgba(197,168,128,.15); color:var(--gold-soft); }
 
