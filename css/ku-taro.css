@@ -609,14 +609,14 @@ header.site.nav-open .nav-toggle span:nth-child(3){ transform:translateY(-8px) r
 .contact::after{
   content:""; position:absolute; inset:0; pointer-events:none;
   background:url("../images/ku-taro/logo-h.png") center 46% / 78% auto no-repeat;
-  filter:blur(10px);
-  opacity:.28;
+  filter:blur(3px);
+  opacity:.45;
 }
 @media (max-width:767px){
-  .contact::after{ background-size:106% auto; filter:blur(8px); opacity:.30; }
+  .contact::after{ background-size:94% auto; filter:blur(2.5px); opacity:.42; }
 }
 @media (prefers-reduced-motion:reduce){
-  .contact::after{ filter:none; opacity:.12; }
+  .contact::after{ filter:none; opacity:.30; }
 }
 .contact .wrap{ position:relative; z-index:1; }
 .contact .sec-head .en{ color:var(--gold-deep); }
