@@ -220,7 +220,7 @@ header.site.nav-open .nav-toggle span:nth-child(3){ transform:translateY(-8px) r
   }
 }
 /* 枠内のセクションは地色を薄い白のヴェールにして、背景画像を透かす */
-.content-wrapper > .section:not(.contact){ background: transparent; }
+.content-wrapper > .section{ background: transparent; }
 .content-wrapper > .section.world,
 .content-wrapper > .section.shopinfo{ background: rgba(255,255,255,.60); }
 .content-wrapper > .section.menu,
@@ -587,43 +587,27 @@ header.site.nav-open .nav-toggle span:nth-child(3){ transform:translateY(-8px) r
 }
 
 /* ── お問い合わせ（CTA） ──
-   3層構造。下から ①濃紺のグラデ地 → ②ぼかした店内写真（::before）
-   → ③濃紺のヴェール＋金の光＋朱赤の熱（::after）。
-   本文（.wrap）は z-index:1 で最前面。
-   ぼかしの縁が透けないよう ::before は inset を外側へ逃がして拡大する。 */
+   枠内の他セクションと同じ白基調。和紙の背景を活かすため地は白のヴェールのみ。
+   上端に金の細線を引いて締めのブロックであることを示し、
+   金と朱赤の光をごく薄く放射で差してブランド3色を残す。 */
 .contact{
   position:relative; overflow:hidden;
-  background:
-    radial-gradient(120% 100% at 50% 0%, #16304f 0%, transparent 62%),
-    linear-gradient(180deg, var(--navy-2) 0%, var(--navy) 58%, #071224 100%);
+  background: rgba(255,255,255,.72);
+  border-top:1px solid var(--line);
 }
-/* ② ぼかした店内写真（陶板の蓋を開ける瞬間／暖色の玉ボケが滲む） */
+/* 上から金の光、下から朱赤の熱（白地なので極薄に） */
 .contact::before{
-  content:""; position:absolute; inset:-72px; pointer-events:none;
-  background:url("../images/ku-taro/IMG02.jpg") center 38% / cover no-repeat;
-  filter:blur(26px) saturate(1.06);
-  transform:scale(1.06);
-  opacity:.58;
-}
-/* ③ 濃紺のヴェールで沈め、その上に金の光（上）と朱赤の熱（下）を差す */
-.contact::after{
   content:""; position:absolute; inset:0; pointer-events:none;
   background:
-    radial-gradient(70% 120% at 50% -10%, rgba(197,168,128,.20) 0%, transparent 60%),
-    radial-gradient(60% 90% at 50% 118%, rgba(200,57,47,.24) 0%, transparent 62%),
-    linear-gradient(180deg, rgba(11,25,44,.78) 0%, rgba(11,25,44,.85) 55%, rgba(7,18,36,.92) 100%);
-}
-/* 動きを減らす設定の端末では、ぼかし処理を省いて地のグラデのみにする */
-@media (prefers-reduced-motion: reduce){
-  .contact::before{ display:none; }
+    radial-gradient(70% 120% at 50% -10%, rgba(197,168,128,.16) 0%, transparent 62%),
+    radial-gradient(60% 90% at 50% 118%, rgba(200,57,47,.09) 0%, transparent 64%);
 }
 .contact .wrap{ position:relative; z-index:1; }
-.contact .sec-head .en{ color:var(--gold-soft); }
-.contact .sec-head .ja{ color:#fff; }
-.contact .sec-head .ja::after{ background:linear-gradient(90deg, var(--gold-soft), var(--gold)); }
+.contact .sec-head .en{ color:var(--gold-deep); }
+.contact .sec-head .ja{ color:var(--navy); }
 .contact__lead{
   max-width:30em; margin:0 auto clamp(30px,5vw,42px); text-align:center;
-  font-size:clamp(13px,1.6vw,15px); color:rgba(255,255,255,.82);
+  font-size:clamp(13px,1.6vw,15px); color:var(--muted);
   font-weight:300; line-height:1.95;
 }
 .contact__actions{
@@ -641,6 +625,9 @@ header.site.nav-open .nav-toggle span:nth-child(3){ transform:translateY(-8px) r
 .btn--primary:hover{ background:var(--gold-soft); transform:translateY(-3px); }
 .btn--ghost{ border:1px solid rgba(255,255,255,.45); color:#fff; }
 .btn--ghost:hover{ border-color:var(--gold-soft); color:var(--gold-soft); transform:translateY(-3px); }
+/* 白地のお問い合わせブロックでは、枠線・文字を濃紺側に反転させる */
+.contact .btn--ghost{ border-color:rgba(11,25,44,.28); color:var(--navy); background:rgba(255,255,255,.6); }
+.contact .btn--ghost:hover{ border-color:var(--gold-deep); color:var(--gold-deep); }
 
 /* ── お問い合わせフォーム（contact.html） ── */
 /* 背景はトップと同じ濃紺ベース＋固定写真スライド。中央の白カラムが上に乗る */
