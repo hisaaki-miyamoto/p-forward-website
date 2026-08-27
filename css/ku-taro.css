@@ -225,6 +225,8 @@ header.site.nav-open .nav-toggle span:nth-child(3){ transform:translateY(-8px) r
 .content-wrapper > .section.shopinfo{ background: rgba(255,255,255,.60); }
 .content-wrapper > .section.menu,
 .content-wrapper > .section.roadmap{ background: rgba(255,255,255,.32); }
+/* お問い合わせだけは和紙の背景を透かさない（不透明な白地） */
+.content-wrapper > .section.contact{ background: var(--paper); }
 .section{ padding:clamp(72px,11vw,140px) clamp(20px,5vw,40px); }
 .wrap{ max-width:var(--maxw); margin:0 auto; }
 .sec-head{ text-align:center; margin-bottom:clamp(44px,7vw,80px); }
@@ -587,12 +589,12 @@ header.site.nav-open .nav-toggle span:nth-child(3){ transform:translateY(-8px) r
 }
 
 /* ── お問い合わせ（CTA） ──
-   枠内の他セクションと同じ白基調。和紙の背景を活かすため地は白のヴェールのみ。
+   ここだけは丸近から転用した和紙の背景を透かさず、不透明な白地にする。
    上端に金の細線を引いて締めのブロックであることを示し、
    金と朱赤の光をごく薄く放射で差してブランド3色を残す。 */
 .contact{
   position:relative; overflow:hidden;
-  background: rgba(255,255,255,.72);
+  background: var(--paper);
   border-top:1px solid var(--line);
 }
 /* 上から金の光、下から朱赤の熱（白地なので極薄に） */
