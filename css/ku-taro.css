@@ -587,26 +587,35 @@ header.site.nav-open .nav-toggle span:nth-child(3){ transform:translateY(-8px) r
 }
 
 /* ── お問い合わせ（CTA） ──
-   ブランド3色（濃紺＝清潔感／朱赤＝焼き蟹の熱／金＝上質）で構成。
-   地は濃紺のグラデ、上に丸近と同じ和紙の刷毛目をごく薄く重ね、
-   さらに金の光と朱赤の熱を放射で差す。写真は使わずボタンの視認性を守る。 */
+   3層構造。下から ①濃紺のグラデ地 → ②ぼかした店内写真（::before）
+   → ③濃紺のヴェール＋金の光＋朱赤の熱（::after）。
+   本文（.wrap）は z-index:1 で最前面。
+   ぼかしの縁が透けないよう ::before は inset を外側へ逃がして拡大する。 */
 .contact{
   position:relative; overflow:hidden;
   background:
     radial-gradient(120% 100% at 50% 0%, #16304f 0%, transparent 62%),
     linear-gradient(180deg, var(--navy-2) 0%, var(--navy) 58%, #071224 100%);
 }
-/* 和紙テクスチャ（丸近公式サイトと同じ画像）をごく薄く */
-.contact::after{
-  content:""; position:absolute; inset:0; pointer-events:none;
-  background:url("../images/ku-taro/bg-mrck-pc.jpg") center center / cover no-repeat;
-  opacity:.10; mix-blend-mode:soft-light;
-}
+/* ② ぼかした店内写真（陶板の蓋を開ける瞬間／暖色の玉ボケが滲む） */
 .contact::before{
+  content:""; position:absolute; inset:-72px; pointer-events:none;
+  background:url("../images/ku-taro/IMG02.jpg") center 38% / cover no-repeat;
+  filter:blur(26px) saturate(1.06);
+  transform:scale(1.06);
+  opacity:.58;
+}
+/* ③ 濃紺のヴェールで沈め、その上に金の光（上）と朱赤の熱（下）を差す */
+.contact::after{
   content:""; position:absolute; inset:0; pointer-events:none;
   background:
     radial-gradient(70% 120% at 50% -10%, rgba(197,168,128,.20) 0%, transparent 60%),
-    radial-gradient(60% 90% at 50% 118%, rgba(200,57,47,.26) 0%, transparent 62%);
+    radial-gradient(60% 90% at 50% 118%, rgba(200,57,47,.24) 0%, transparent 62%),
+    linear-gradient(180deg, rgba(11,25,44,.78) 0%, rgba(11,25,44,.85) 55%, rgba(7,18,36,.92) 100%);
+}
+/* 動きを減らす設定の端末では、ぼかし処理を省いて地のグラデのみにする */
+@media (prefers-reduced-motion: reduce){
+  .contact::before{ display:none; }
 }
 .contact .wrap{ position:relative; z-index:1; }
 .contact .sec-head .en{ color:var(--gold-soft); }
