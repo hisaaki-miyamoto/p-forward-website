@@ -602,6 +602,20 @@ header.site.nav-open .nav-toggle span:nth-child(3){ transform:translateY(-8px) r
     radial-gradient(70% 120% at 50% -10%, rgba(197,168,128,.16) 0%, transparent 62%),
     radial-gradient(60% 90% at 50% 118%, rgba(200,57,47,.09) 0%, transparent 64%);
 }
+/* ヘッダーと同じ横ロゴを大きくぼかして、白地の透かしとして敷く。
+   画像は枠の内側に収まるサイズなので、ぼかしの縁が切れる心配はない。 */
+.contact::after{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background:url("../images/ku-taro/logo-h.png") center 46% / 78% auto no-repeat;
+  filter:blur(10px);
+  opacity:.28;
+}
+@media (max-width:767px){
+  .contact::after{ background-size:106% auto; filter:blur(8px); opacity:.30; }
+}
+@media (prefers-reduced-motion:reduce){
+  .contact::after{ filter:none; opacity:.12; }
+}
 .contact .wrap{ position:relative; z-index:1; }
 .contact .sec-head .en{ color:var(--gold-deep); }
 .contact .sec-head .ja{ color:var(--navy); }
