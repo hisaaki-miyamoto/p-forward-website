@@ -944,6 +944,36 @@ header.site.scrolled .brand-logo--dark{ opacity:1; }
   transition:transform .4s ease, box-shadow .4s ease, border-color .4s ease;
 }
 .dish:hover{ transform:translateY(-4px); box-shadow:0 20px 48px rgba(11,25,44,.10); border-color:var(--gold-soft); }
+/* ── お品書きの写真 ──
+   カードの内側パディングを打ち消して上端いっぱいに敷く。
+   写真が未撮影の品は、蟹マークを置いた生成り地のプレースホルダにする。 */
+.dish__photo{
+  margin:calc(-1 * clamp(18px,2.8vw,24px)) calc(-1 * clamp(16px,2.6vw,24px)) clamp(16px,2.4vw,20px);
+  border-radius:10px 10px 0 0; overflow:hidden;
+  background:var(--paper-soft);
+}
+.dish__photo img{
+  display:block; width:100%; height:auto;
+  aspect-ratio:3/2; object-fit:cover;
+  transition:transform .6s ease;
+}
+.dish:hover .dish__photo img{ transform:scale(1.04); }
+/* 写真準備中：マークを小さく中央に置き、拡大もしない */
+.dish__photo--soon{
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px;
+  aspect-ratio:3/2;
+  background:
+    radial-gradient(70% 90% at 50% 30%, rgba(197,168,128,.14) 0%, transparent 62%),
+    var(--paper-soft);
+  border-bottom:1px solid var(--line);
+}
+.dish__photo--soon img{
+  width:auto; height:clamp(46px,7vw,60px); aspect-ratio:auto; opacity:.28;
+}
+.dish:hover .dish__photo--soon img{ transform:none; }
+.dish__photo--soon figcaption{
+  font-size:10.5px; letter-spacing:.18em; color:var(--gold-deep); font-weight:400;
+}
 .dish__role{
   display:inline-block; font-size:10px; letter-spacing:.2em;
   color:#fff; background:var(--vermilion); border-radius:3px; padding:3px 10px;
