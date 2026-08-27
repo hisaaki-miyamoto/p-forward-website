@@ -203,9 +203,28 @@ header.site.nav-open .nav-toggle span:nth-child(3){ transform:translateY(-8px) r
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
-  background: var(--paper-soft);
+  /* 丸近公式サイト（kani-mrck.com）と同じ和紙・刷毛目の背景 */
+  background-color: var(--paper-soft);
+  background-image: url("../images/ku-taro/bg-mrck-pc.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   box-shadow: 0 0 40px rgba(0,0,0,0.15);
 }
+@media (max-width: 767px){
+  .content-wrapper{
+    background-image: url("../images/ku-taro/bg-mrck-sp.jpg");
+    background-attachment: scroll;
+    background-size: cover;
+  }
+}
+/* 枠内のセクションは地色を薄い白のヴェールにして、背景画像を透かす */
+.content-wrapper > .section:not(.contact){ background: transparent; }
+.content-wrapper > .section.world,
+.content-wrapper > .section.shopinfo{ background: rgba(255,255,255,.60); }
+.content-wrapper > .section.menu,
+.content-wrapper > .section.roadmap{ background: rgba(255,255,255,.32); }
 .section{ padding:clamp(72px,11vw,140px) clamp(20px,5vw,40px); }
 .wrap{ max-width:var(--maxw); margin:0 auto; }
 .sec-head{ text-align:center; margin-bottom:clamp(44px,7vw,80px); }
@@ -567,11 +586,27 @@ header.site.nav-open .nav-toggle span:nth-child(3){ transform:translateY(-8px) r
   font-size:clamp(16px,2vw,19px); letter-spacing:.18em;
 }
 
-/* ── お問い合わせ（CTA） ── */
-.contact{ background:var(--navy); position:relative; overflow:hidden; }
+/* ── お問い合わせ（CTA） ──
+   ブランド3色（濃紺＝清潔感／朱赤＝焼き蟹の熱／金＝上質）で構成。
+   地は濃紺のグラデ、上に丸近と同じ和紙の刷毛目をごく薄く重ね、
+   さらに金の光と朱赤の熱を放射で差す。写真は使わずボタンの視認性を守る。 */
+.contact{
+  position:relative; overflow:hidden;
+  background:
+    radial-gradient(120% 100% at 50% 0%, #16304f 0%, transparent 62%),
+    linear-gradient(180deg, var(--navy-2) 0%, var(--navy) 58%, #071224 100%);
+}
+/* 和紙テクスチャ（丸近公式サイトと同じ画像）をごく薄く */
+.contact::after{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background:url("../images/ku-taro/bg-mrck-pc.jpg") center center / cover no-repeat;
+  opacity:.10; mix-blend-mode:soft-light;
+}
 .contact::before{
-  content:""; position:absolute; inset:0;
-  background:radial-gradient(70% 120% at 50% -10%, rgba(197,168,128,.16) 0%, transparent 60%);
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background:
+    radial-gradient(70% 120% at 50% -10%, rgba(197,168,128,.20) 0%, transparent 60%),
+    radial-gradient(60% 90% at 50% 118%, rgba(200,57,47,.26) 0%, transparent 62%);
 }
 .contact .wrap{ position:relative; z-index:1; }
 .contact .sec-head .en{ color:var(--gold-soft); }
