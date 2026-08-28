@@ -723,7 +723,7 @@ footer.site .copy{
 .pagetop{
   position:fixed; right:24px; bottom:28px; z-index:200;
   width:48px; height:48px; border-radius:8px; border:0;
-  background:var(--navy); color:#fff; cursor:pointer;
+  background:var(--vermilion); color:#fff; cursor:pointer;
   display:flex; align-items:center; justify-content:center;
   opacity:0; visibility:hidden; transform:translateY(12px);
   transition:opacity .4s ease, transform .4s ease, visibility .4s, background .3s;
@@ -731,7 +731,7 @@ footer.site .copy{
 }
 .pagetop svg{ width:22px; height:22px; }
 .pagetop.show{ opacity:1; visibility:visible; transform:none; }
-.pagetop:hover{ background:var(--gold-deep); }
+.pagetop:hover{ background:var(--vermilion-deep); }
 /* メニュー展開中はページトップボタンを隠す（重なり防止） */
 header.site.nav-open ~ .pagetop{ opacity:0; visibility:hidden; pointer-events:none; }
 
