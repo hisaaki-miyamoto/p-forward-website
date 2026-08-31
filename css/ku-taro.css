@@ -984,6 +984,11 @@ header.site.scrolled .brand-logo--dark{ opacity:1; }
   display:inline-block; font-size:10px; letter-spacing:.2em;
   color:#fff; background:var(--vermilion); border-radius:3px; padding:3px 10px;
 }
+/* 役割バッジの隣に添える注記 */
+.dish__imgnote{
+  display:inline-block; margin-left:8px; font-size:10.5px;
+  color:var(--muted); font-weight:300; letter-spacing:.04em;
+}
 .dish__name{
   font-family:var(--serif); font-weight:700; color:var(--navy);
   font-size:clamp(16px,2vw,19px); letter-spacing:.06em; margin:12px 0 4px;
@@ -1006,6 +1011,7 @@ header.site.scrolled .brand-logo--dark{ opacity:1; }
 /* ── コース（松・竹・梅・お子様プラン） ── */
 .courses{ display:grid; gap:clamp(12px,2vw,16px); }
 .courses__label{
+  grid-column:1 / -1;
   font-family:var(--serif); font-size:11px; letter-spacing:.3em;
   color:var(--gold-deep); text-align:center; margin-bottom:clamp(6px,1.4vw,12px);
 }
@@ -1025,12 +1031,14 @@ header.site.scrolled .brand-logo--dark{ opacity:1; }
   font-family:var(--serif); font-weight:700; color:var(--navy);
   font-size:clamp(18px,2.4vw,22px); letter-spacing:.14em;
 }
-.course--kids .course__name{ font-size:clamp(15px,2vw,18px); letter-spacing:.08em; }
+.course--kids .course__name{ font-size:clamp(15px,2vw,18px); letter-spacing:.08em; white-space:nowrap; }
 .course__price{
   font-family:var(--serif); font-weight:700; color:var(--vermilion-deep);
   font-size:clamp(20px,2.8vw,26px); letter-spacing:.02em; white-space:nowrap;
 }
 .course__price small{ font-size:.5em; font-weight:500; letter-spacing:.06em; color:var(--muted); margin-left:3px; }
+/* お子様プランは名前が長いため、単位を改行して見出しを1行に収める */
+.course--kids .course__price small{ display:block; margin-left:0; text-align:right; }
 /* 提供メニュー：中黒で区切って詰めて並べる */
 .course__items{ display:flex; flex-wrap:wrap; gap:4px 0; margin-top:12px; }
 .course__items li{
@@ -1045,9 +1053,11 @@ header.site.scrolled .brand-logo--dark{ opacity:1; }
 }
 .course__items li em::before{ content:"（"; }
 .course__items li em::after{ content:"）"; }
-.course__note{
-  margin-top:12px; font-size:12.5px; color:var(--muted);
-  font-weight:300; line-height:1.85;
+/* コース全体への注記：カードの外に全幅で置き、4枚の高さを揃える */
+.courses__note{
+  grid-column:1 / -1;
+  margin-top:2px; font-size:12.5px; color:var(--muted);
+  font-weight:300; line-height:1.85; text-align:center;
 }
 /* ── ご予約特典 ── */
 .gift{
@@ -1067,7 +1077,8 @@ header.site.scrolled .brand-logo--dark{ opacity:1; }
   letter-spacing:.02em;
 }
 @media (min-width:769px){
-  .courses{ grid-template-columns:repeat(2,1fr); }
+  /* minmax(0,1fr)：中身の最小幅に押されず、左右をきっちり等幅にする */
+  .courses{ grid-template-columns:repeat(2,minmax(0,1fr)); }
 }
 
 /* ── 営業（3部制） ── */
