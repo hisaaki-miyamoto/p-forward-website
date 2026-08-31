@@ -940,9 +940,10 @@ header.site.scrolled .brand-logo--dark{ opacity:1; }
 /* ── お品書き ── */
 .menu{ background:var(--paper-soft); }
 .dishes{ display:grid; gap:clamp(14px,2.2vw,20px); }
-/* PCは2列。コンセプトのカード（.cards）と同じ列構成に揃える */
+/* PCは2列。コンセプトのカード（.cards）と同じ列構成に揃える
+   minmax(0,1fr) で左右を等幅に、grid-auto-rows:1fr で段をまたいでも全カードを同じ高さに */
 @media (min-width:769px){
-  .dishes{ grid-template-columns:repeat(2,1fr); }
+  .dishes{ grid-template-columns:repeat(2,minmax(0,1fr)); grid-auto-rows:1fr; }
 }
 .dish{
   background:#fff; border:1px solid var(--line); border-radius:10px;
@@ -995,6 +996,11 @@ header.site.scrolled .brand-logo--dark{ opacity:1; }
 }
 .dish__en{ display:block; font-family:var(--sans); font-weight:400; font-size:10px; letter-spacing:.22em; color:var(--gold-deep); margin-top:6px; }
 .dish p{ font-size:14px; color:var(--muted); font-weight:300; margin-top:10px; }
+/* 提供条件の注記：説明文と混ざらないよう、点線で区切って下に置く */
+.dish__note{
+  margin-top:12px; padding-top:10px; border-top:1px dashed var(--line);
+  font-size:12px; color:var(--muted); font-weight:300; line-height:1.8;
+}
 .price{
   margin:clamp(28px,4.4vw,40px) auto 0; max-width:var(--maxw);
   border:1px solid var(--gold-soft); border-radius:10px;
