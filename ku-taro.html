@@ -38,10 +38,22 @@
 {
   "@context": "https://schema.org",
   "@type": "Restaurant",
+  "@id": "https://p.forward.mrck.jp/ku-taro.html#restaurant",
+  "url": "https://p.forward.mrck.jp/ku-taro.html",
   "name": "焼き蟹 浦島喰太郎",
+  "alternateName": "うらしまくうたろう",
   "servesCuisine": ["蟹料理", "和食"],
-  "description": "浦島伝説の「玉手箱」を再現する体験型の蟹料理店。丸近直送の蟹を陶板焼きで提供します。",
+  "description": "浦島伝説の「玉手箱」を再現する体験型の蟹料理店。丸近直送の蟹を陶板焼きで提供します。2026年10月、城崎温泉の木屋町小路に開業予定。",
   "priceRange": "¥3,800 - ¥6,600",
+  "currenciesAccepted": "JPY",
+  "telephone": "+81-796-36-1339",
+  "image": [
+    "https://p.forward.mrck.jp/images/ku-taro/IMG01.jpg",
+    "https://p.forward.mrck.jp/images/ku-taro/IMG03.jpg",
+    "https://p.forward.mrck.jp/images/ku-taro/IMG04.jpg",
+    "https://p.forward.mrck.jp/images/ku-taro/IMG09.jpg"
+  ],
+  "logo": "https://p.forward.mrck.jp/images/ku-taro/logo-h.png",
   "address": {
     "@type": "PostalAddress",
     "addressCountry": "JP",
@@ -49,6 +61,45 @@
     "addressLocality": "豊岡市城崎町湯島",
     "streetAddress": "391番地 木屋町小路テナントC"
   },
+  "acceptsReservations": "https://p.forward.mrck.jp/contact.html",
+  "hasMenu": {
+    "@type": "Menu",
+    "name": "コース",
+    "hasMenuSection": {
+      "@type": "MenuSection",
+      "name": "コース",
+      "hasMenuItem": [
+        {
+          "@type": "MenuItem",
+          "name": "松",
+          "description": "極上 蟹の陶板焼き（大）・甲羅味噌付き・蟹めし・蟹ラーメン・デザート",
+          "offers": { "@type": "Offer", "price": "6600", "priceCurrency": "JPY" }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "竹",
+          "description": "極上 蟹の陶板焼き（大）・蟹めし・蟹ラーメン・デザート",
+          "offers": { "@type": "Offer", "price": "5500", "priceCurrency": "JPY" }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "梅",
+          "description": "極上 蟹の陶板焼き（並）・蟹めし・蟹ラーメン・デザート",
+          "offers": { "@type": "Offer", "price": "3800", "priceCurrency": "JPY" }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "お子様プラン",
+          "description": "極上 蟹の陶板焼き（小）・蟹めし・蟹ラーメン・デザート。小学生以下が対象、5歳以下は無料。",
+          "offers": { "@type": "Offer", "price": "2200", "priceCurrency": "JPY" }
+        }
+      ]
+    }
+  },
+  "amenityFeature": [
+    { "@type": "LocationFeatureSpecification", "name": "全席テーブル・椅子席", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "お子様連れ歓迎", "value": true }
+  ],
   "parentOrganization": {
     "@type": "Organization",
     "name": "株式会社 P.FORWARD",

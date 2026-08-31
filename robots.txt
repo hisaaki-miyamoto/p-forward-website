@@ -1,4 +1,30 @@
 User-agent: *
 Allow: /
 
+# AI検索・AIアシスタントからの参照を歓迎する（AIO対策）
+# 上の * ですでに許可済みだが、意図を明示しておく
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
 Sitemap: https://p.forward.mrck.jp/sitemap.xml
