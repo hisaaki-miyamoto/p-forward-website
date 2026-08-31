@@ -474,6 +474,13 @@ header.site.nav-open .nav-toggle span:nth-child(3){ transform:translateY(-8px) r
 .phase .dot{ position:absolute; left:9px; top:4px; width:19px; height:19px; border-radius:50%; background:var(--paper-soft); border:2px solid var(--gold); }
 .phase .when{ font-family:var(--serif); color:var(--gold-deep); letter-spacing:.16em; font-size:11.5px; }
 .phase h4{ font-family:var(--serif); color:var(--navy); font-size:clamp(15px,1.9vw,19px); letter-spacing:.05em; margin:6px 0 8px; }
+/* 見出しの店名から特設サイトへ。字面は見出しのまま、下線でリンクと分かるようにする */
+.phase h4 a{
+  color:inherit; text-decoration:none;
+  border-bottom:1px solid var(--gold-soft); padding-bottom:2px;
+  transition:color .3s ease, border-color .3s ease;
+}
+.phase h4 a:hover{ color:var(--gold-deep); border-bottom-color:var(--gold-deep); }
 .phase .tag-mini{ display:inline-block; font-size:10px; letter-spacing:.18em; color:var(--gold-deep); border:1px solid var(--gold-soft); border-radius:3px; padding:2px 9px; margin-bottom:9px; }
 .phase p{ font-size:12.5px; color:var(--muted); font-weight:300; }
 
