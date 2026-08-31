@@ -232,8 +232,6 @@ header.site.nav-open .nav-toggle span:nth-child(3){ transform:translateY(-8px) r
 .section{ padding:clamp(72px,11vw,140px) clamp(20px,5vw,40px) 0; }
 /* 締めのお問い合わせだけは、フッターとぶつからないよう下余白を残す */
 .content-wrapper > .section.contact{ padding-bottom:clamp(72px,11vw,140px); }
-/* 店舗コンセプトの後だけ、1行分（行送り1.9em）の間を足す */
-.content-wrapper > .section.concept{ padding-bottom:1.9em; }
 .wrap{ max-width:var(--maxw); margin:0 auto; }
 .sec-head{ text-align:center; margin-bottom:clamp(44px,7vw,80px); }
 .sec-head .en{
@@ -252,7 +250,7 @@ header.site.nav-open .nav-toggle span:nth-child(3){ transform:translateY(-8px) r
 }
 .lead{
   max-width:34em; margin:0 auto; text-align:left;
-  font-size:clamp(12.5px,1.5vw,14px); color:var(--muted); font-weight:300; line-height:1.95;
+  font-size:clamp(14px,1.7vw,15.5px); color:var(--muted); font-weight:300; line-height:1.95;
 }
 
 /* ── 経営理念：社名に込めた想い ／ 経営理念・信念・信条 ──
@@ -629,7 +627,7 @@ header.site.nav-open .nav-toggle span:nth-child(3){ transform:translateY(-8px) r
 .contact .sec-head .ja{ color:var(--navy); }
 .contact__lead{
   max-width:30em; margin:0 auto clamp(30px,5vw,42px); text-align:center;
-  font-size:clamp(13px,1.6vw,15px); color:var(--muted);
+  font-size:clamp(14.5px,1.8vw,16.5px); color:var(--muted);
   font-weight:300; line-height:1.95;
 }
 .contact__actions{
@@ -920,14 +918,12 @@ header.site.scrolled .brand-logo--dark{ opacity:1; }
 .sec-head .ja::after{ background:linear-gradient(90deg, var(--vermilion), var(--gold-soft)); }
 
 /* ── コンセプト：3本柱カード ── */
-.concept .card .no{ color:var(--vermilion); }
-.concept .card:hover{ border-color:var(--vermilion-soft); }
 
 /* ── 世界観：本文＋写真 ── */
 .world{ background:var(--paper); }
 .world .body{
   max-width:34em; margin:0 auto; text-align:left;
-  font-size:clamp(13px,1.6vw,15px); color:var(--ink);
+  font-size:clamp(14.5px,1.8vw,16.5px); color:var(--ink);
   font-weight:300; line-height:2.05; letter-spacing:.04em;
 }
 .world .body em{ font-style:normal; font-weight:500; color:var(--vermilion-deep); }
@@ -993,7 +989,7 @@ header.site.scrolled .brand-logo--dark{ opacity:1; }
   font-size:clamp(16px,2vw,19px); letter-spacing:.06em; margin:12px 0 4px;
 }
 .dish__en{ display:block; font-family:var(--sans); font-weight:400; font-size:10px; letter-spacing:.22em; color:var(--gold-deep); margin-top:6px; }
-.dish p{ font-size:12.5px; color:var(--muted); font-weight:300; margin-top:10px; }
+.dish p{ font-size:14px; color:var(--muted); font-weight:300; margin-top:10px; }
 .price{
   margin:clamp(28px,4.4vw,40px) auto 0; max-width:var(--maxw);
   border:1px solid var(--gold-soft); border-radius:10px;
@@ -1021,8 +1017,8 @@ header.site.scrolled .brand-logo--dark{ opacity:1; }
 }
 .slot__time span{ display:block; font-family:var(--sans); font-weight:400; font-size:10px; letter-spacing:.2em; color:var(--gold-deep); margin-top:6px; }
 .slot__body h4{ font-family:var(--serif); color:var(--navy); font-size:14px; letter-spacing:.06em; margin-bottom:6px; }
-.slot__body p{ font-size:12.5px; color:var(--muted); font-weight:300; }
-.slot__note{ margin-top:clamp(20px,3vw,28px); font-size:12px; color:var(--muted); font-weight:300; line-height:1.95; text-align:center; }
+.slot__body p{ font-size:14px; color:var(--muted); font-weight:300; }
+.slot__note{ margin-top:clamp(20px,3vw,28px); font-size:13px; color:var(--muted); font-weight:300; line-height:1.95; text-align:center; }
 
 /* ── 店舗情報 ── */
 .shopinfo{ background:var(--paper); }
@@ -1030,7 +1026,7 @@ header.site.scrolled .brand-logo--dark{ opacity:1; }
 .infolist .row{ display:flex; gap:clamp(14px,3vw,26px); padding:14px 2px; border-bottom:1px solid var(--line); }
 .infolist .row:first-child{ border-top:1px solid var(--line); }
 .infolist dt{ flex:0 0 7.4em; font-size:12px; letter-spacing:.12em; color:var(--gold-deep); font-family:var(--serif); }
-.infolist dd{ font-size:13px; color:var(--ink); font-weight:300; line-height:1.9; }
+.infolist dd{ font-size:14.5px; color:var(--ink); font-weight:300; line-height:1.9; }
 .infolist dd a{ text-decoration:underline; text-underline-offset:3px; }
 .infolist dd small{ display:block; font-size:11px; color:var(--muted); margin-top:4px; }
 .notice{
