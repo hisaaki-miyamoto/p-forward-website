@@ -36,9 +36,16 @@
            frame-ancestors 'none';
            style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
            font-src 'self' https://fonts.gstatic.com;
-           img-src 'self' data: blob:;
-           script-src 'self';
-           connect-src 'self';" />
+           img-src 'self' data: blob: https://www.google-analytics.com https://www.googletagmanager.com;
+           script-src 'self' https://www.googletagmanager.com;
+           connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com;" />
+
+<!-- ============ アクセス解析（GA4 / G-MV31MNHJTQ） ============
+     設定コードは js/ga4.js に置いてある。インラインで書くと CSP に
+     'unsafe-inline' が必要になり、サイト全体のXSS耐性が落ちるため。 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MV31MNHJTQ"></script>
+<script src="js/ga4.js"></script>
+
 <meta name="format-detection" content="telephone=no" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
