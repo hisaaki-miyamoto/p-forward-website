@@ -449,6 +449,36 @@ header.site.nav-open .nav-toggle span:nth-child(3){ transform:translateY(-8px) r
 .about__cols{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(20px,4vw,40px); margin-top:clamp(32px,5vw,48px); }
 .about__cols h3{ font-family:var(--serif); color:var(--navy); font-size:16px; letter-spacing:.06em; margin-bottom:12px; padding-bottom:10px; border-bottom:1px solid var(--line); }
 .about__cols p{ font-size:13px; color:var(--muted); font-weight:300; }
+/* ── 会社概要 ──
+   補助金申請や取引先から聞かれる項目を、登記の内容どおりに並べる。
+   見出しは COURSE 等と同じ小さな英字ラベルで、本文の流れを切らないようにした。 */
+.corp__label{
+  font-family:var(--serif); font-size:11px; letter-spacing:.3em;
+  color:var(--gold-deep); text-align:center;
+  margin:clamp(36px,5.5vw,56px) 0 clamp(14px,2vw,20px);
+}
+.corp{ max-width:720px; margin:0 auto; }
+.corp .row{
+  display:flex; gap:clamp(12px,2vw,20px);
+  padding:11px 4px; border-bottom:1px solid var(--line);
+  font-size:13px; font-weight:300; line-height:1.9;
+}
+.corp .row:first-child{ border-top:1px solid var(--line); }
+.corp dt{
+  flex:0 0 6.5em; color:var(--gold-deep);
+  letter-spacing:.1em; font-weight:400;
+}
+.corp dd{ color:var(--ink); }
+.corp dd small{
+  display:block; font-size:11px; color:var(--muted);
+  letter-spacing:.08em; margin-top:2px;
+}
+.corp a{ color:var(--ink); text-decoration:none; border-bottom:1px solid var(--gold-soft); }
+.corp a:hover{ color:var(--gold-deep); border-bottom-color:var(--gold-deep); }
+@media (max-width:768px){
+  .corp dt{ flex-basis:5.5em; }
+  .corp .row{ font-size:12.5px; }
+}
 .tags{ display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
 .tags span{ font-size:11.5px; letter-spacing:.06em; color:var(--navy); border:1px solid var(--line); border-radius:999px; padding:5px 13px; background:#fff; }
 
