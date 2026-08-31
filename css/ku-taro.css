@@ -927,6 +927,8 @@ header.site.scrolled .brand-logo--dark{ opacity:1; }
   font-weight:300; line-height:2.05; letter-spacing:.04em;
 }
 .world .body em{ font-style:normal; font-weight:500; color:var(--vermilion-deep); }
+/* 写真の下に続く本文：写真とのあいだに余白を取る */
+.world .body--after-figure{ margin-top:clamp(30px,5vw,44px); }
 .figure{ margin:clamp(30px,5vw,44px) auto 0; max-width:var(--maxw); }
 .figure img{
   width:100%; height:auto; border-radius:10px;
