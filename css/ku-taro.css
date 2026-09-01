@@ -1004,7 +1004,19 @@ header.site.scrolled .brand-logo--dark{ opacity:1; }
 .hero__eyebrow{ color:#fff; opacity:.9; letter-spacing:.3em; }
 .hero__title{ font-size:clamp(24px,4.4vw,44px); }
 .hero__title .accent{ color:var(--vermilion-soft); }
+/* ── ヒーロー中央のシンボルマーク ──
+   2026-09-01 非表示にした。ヘッダーのロゴ、中央の店名テキスト、さらに
+   背景写真の暖簾にもロゴが写り込んでおり、同じ画面に3重で出ていたため。
+   ヘッダー＝識別と導線、中央のテキスト＝開業告知の主役、と役割が分かれる一方、
+   このマークだけは装飾的な再掲になっていた（Codexとも同じ結論）。
+
+   ⚠ 現在のヒーロー写真は、店舗が未完成で撮影できないための暫定画像。
+     開業後に実店舗の写真へ差し替えた際、写真の中にロゴが写らない構図なら
+     このマークを復活させたほうが収まりが良いことがある。
+     そのときは下の display:none の1行を消すだけで戻る。
+     （HTML側の <img class="hero__mark"> はあえて残してある） */
 .hero__mark{
+  display:none;
   width:clamp(64px,8vw,86px); height:auto; margin:0 auto 20px;
   filter:drop-shadow(0 3px 12px rgba(0,0,0,.6));
   opacity:0; animation:fadeUp 1.2s ease .2s forwards;
