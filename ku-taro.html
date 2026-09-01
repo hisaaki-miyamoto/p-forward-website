@@ -137,7 +137,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet" />
 
 <!-- ?v= はキャッシュ対策。CSSを更新したらこの数字も必ず上げること -->
-<link rel="stylesheet" href="css/ku-taro.css?v=20260831d" />
+<link rel="stylesheet" href="css/ku-taro.css?v=20260901" />
 </head>
 <body>
 
@@ -159,10 +159,21 @@
       <a href="#menu">お品書き</a>
       <a href="#hours">営業時間</a>
       <a href="#shop">店舗情報</a>
-      <!-- リンク先は丸近の直営店。当店(P.FORWARD運営)から見ると直営ではないため、
-           グループとしての関係を示す「グループ店舗」と表記している。
-           個別にリンクすると店舗の増減に追随が要るので、丸近のブランドページへ1本にまとめる -->
-      <a href="https://www.kani-mrck.com/view/page/brands" class="nav-badge" target="_blank" rel="noopener">グループ店舗</a>
+      <!-- 丸近グループの店舗。一覧ページへ送ると「直営」表記が飛び込んでしまうため、
+           店舗ごとに直接その公式サイトへ行けるようにしている。
+           PCはホバー、スマホ・キーボード操作はクリックで開く（js/main.js） -->
+      <div class="nav-group">
+        <button type="button" class="nav-badge nav-group__btn" aria-expanded="false" aria-haspopup="true" aria-controls="groupMenu">
+          グループ店舗<span class="nav-group__caret" aria-hidden="true"></span>
+        </button>
+        <ul class="nav-group__menu" id="groupMenu">
+          <li><a href="https://kawai.kani-mrck.jp/" target="_blank" rel="noopener">きのさき 華和ゐ<small>城崎温泉</small></a></li>
+          <li><a href="https://kawai-kami.kani-mrck.jp/" target="_blank" rel="noopener">華和ゐ 香住本店<small>香住</small></a></li>
+          <li><a href="https://kaniichiban-osaka.com/" target="_blank" rel="noopener">香住蟹一番<small>大阪・難波</small></a></li>
+          <li><span class="nav-group__soon">蟹料理 華ゐちばん<small>城崎温泉／準備中</small></span></li>
+          <li><span class="nav-group__soon">CRAB &amp; SHRIMP<small>城崎温泉／準備中</small></span></li>
+        </ul>
+      </div>
     </div>
   </nav>
 </header>
@@ -442,5 +453,6 @@
 </button>
 
 <script src="js/main.js"></script>
+<script src="js/ku-taro-nav.js"></script>
 </body>
 </html>

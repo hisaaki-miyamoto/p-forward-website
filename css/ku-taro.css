@@ -82,6 +82,56 @@ header.site nav a.nav-badge::after{ content:none; }
 header.site nav a.nav-badge:hover{ border-color:var(--gold-soft); color:var(--gold-soft); }
 header.site.scrolled nav a.nav-badge{ border-color:var(--line); }
 header.site.scrolled nav a.nav-badge:hover{ border-color:var(--gold-deep); color:var(--gold-deep); }
+/* ── グループ店舗のドロップダウン ──
+   一覧ページへ送ると「直営」表記が飛び込むため、店舗ごとに直接リンクする。
+   PCはホバーで開き、キーボード操作とスマホはクリック（.is-open）で開く。 */
+.nav-group{ position:relative; }
+.nav-group__btn{
+  display:inline-flex; align-items:center; gap:7px;
+  font-family:inherit; font-size:13px; color:rgba(255,255,255,.88);
+  background:none; cursor:pointer;
+}
+.nav-group__caret{
+  width:5px; height:5px; border-right:1px solid currentColor; border-bottom:1px solid currentColor;
+  transform:rotate(45deg) translate(-1px,-1px); transition:transform .3s ease;
+}
+.nav-group:hover .nav-group__caret,
+.nav-group.is-open .nav-group__caret{ transform:rotate(-135deg) translate(-2px,-2px); }
+.nav-group__menu{
+  position:absolute; top:calc(100% + 12px); right:0; z-index:60;
+  min-width:236px; padding:8px;
+  background:linear-gradient(180deg, rgba(11,25,44,.98), rgba(8,18,32,.98));
+  -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
+  border:1px solid var(--gold-soft); border-radius:12px;
+  box-shadow:0 18px 44px rgba(0,0,0,.42);
+  opacity:0; visibility:hidden; transform:translateY(-6px);
+  transition:opacity .3s ease, visibility .3s ease, transform .3s ease;
+}
+/* 見出しとメニューの隙間でホバーが切れないよう、透明な橋を渡す */
+.nav-group__menu::before{
+  content:""; position:absolute; left:0; right:0; top:-12px; height:12px;
+}
+.nav-group:hover .nav-group__menu,
+.nav-group.is-open .nav-group__menu{ opacity:1; visibility:visible; transform:none; }
+.nav-group__menu a,
+.nav-group__soon{
+  display:block; padding:9px 12px; border-radius:8px;
+  font-size:12.5px; letter-spacing:.06em; line-height:1.5;
+  color:rgba(255,255,255,.92); text-align:left;
+}
+.nav-group__menu a::after{ content:none; }
+.nav-group__menu a small,
+.nav-group__soon small{
+  display:block; margin-top:2px;
+  font-size:10.5px; letter-spacing:.1em; color:var(--gold-deep);
+}
+.nav-group__menu a:hover{ background:rgba(197,168,128,.16); color:var(--gold-soft); }
+/* 準備中の店舗は押せないことが伝わるよう、薄く・カーソルも変えない */
+.nav-group__soon{ color:rgba(255,255,255,.45); cursor:default; }
+.nav-group__soon small{ color:rgba(197,168,128,.5); }
+/* ヘッダーが白くなった後は、ボタンの文字色を本文色に寄せる（メニュー自体は濃紺のまま） */
+header.site.scrolled .nav-group__btn{ color:var(--ink); }
+
 /* PCではラッパーを無効化してリンクを直接フレックス配置（モバイルでのみカード化） */
 .nav-panel{ display:contents; }
 
@@ -853,6 +903,29 @@ header.site.nav-open ~ .pagetop{ opacity:0; visibility:hidden; pointer-events:no
   }
   header.site nav a:hover,
   header.site nav a:active{ background:rgba(197,168,128,.15); color:var(--gold-soft); }
+
+  /* グループ店舗：スマホはホバーがないため、ドロワー内で開いたまま並べる。
+     浮かせると画面外へはみ出すので、位置指定も解除する。 */
+  .nav-group{ position:static; }
+  .nav-group__btn{
+    display:block; width:100%; text-align:center;
+    padding:13px 10px; border:0; border-radius:10px;
+    border-top:1px solid rgba(197,168,128,.16);
+    font-size:15.5px; letter-spacing:.16em; color:#fff;
+  }
+  .nav-group__caret{ display:none; }
+  .nav-group__menu{
+    position:static; opacity:1; visibility:visible; transform:none;
+    min-width:0; margin:2px 0 0; padding:4px 0 2px;
+    background:none; -webkit-backdrop-filter:none; backdrop-filter:none;
+    border:0; border-radius:0; box-shadow:none;
+  }
+  .nav-group__menu::before{ content:none; }
+  .nav-group__menu a,
+  .nav-group__soon{
+    text-align:center; font-size:13.5px; letter-spacing:.1em; padding:10px;
+  }
+  .nav-group__menu a{ border-top:0; }
 
   /* スマホでも事業領域カードは2列を維持 */
   .cards{ grid-template-columns:repeat(2,1fr); }
