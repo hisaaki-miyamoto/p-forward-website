@@ -17,11 +17,38 @@
   var btn = group.querySelector('.nav-group__btn');
   if (!btn) return;
 
+  /*
+    スマホ（768px以下）ではCSSがメニューを開いたまま表示する。
+    そこで aria-expanded を持たせたままだと「閉じている」と読み上げられ、
+    見えている状態と食い違う。常時表示の幅では開閉の属性ごと外し、
+    ただの見出しとして扱う。（2026-09-01 Codex指摘）
+  */
+  var alwaysOpen = window.matchMedia('(max-width:768px)');
+
+  function syncMode() {
+    if (alwaysOpen.matches) {
+      btn.removeAttribute('aria-expanded');
+      btn.removeAttribute('aria-haspopup');
+      group.classList.remove('is-open');
+    } else {
+      btn.setAttribute('aria-haspopup', 'true');
+      btn.setAttribute('aria-expanded', group.classList.contains('is-open') ? 'true' : 'false');
+    }
+  }
+  syncMode();
+  if (alwaysOpen.addEventListener) {
+    alwaysOpen.addEventListener('change', syncMode);
+  } else if (alwaysOpen.addListener) {
+    alwaysOpen.addListener(syncMode);
+  }
+
   function open() {
+    if (alwaysOpen.matches) return;   // 常時表示の幅では何もしない
     group.classList.add('is-open');
     btn.setAttribute('aria-expanded', 'true');
   }
   function close() {
+    if (alwaysOpen.matches) return;
     group.classList.remove('is-open');
     btn.setAttribute('aria-expanded', 'false');
   }
