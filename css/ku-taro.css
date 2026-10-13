@@ -1134,7 +1134,9 @@ header.site.scrolled .brand-logo--dark{ opacity:1; }
 .price__value small{ font-size:.6em; font-weight:500; letter-spacing:.1em; margin-left:4px; }
 .price p:not(.price__value):not(.price__label){ font-size:12px; color:var(--muted); font-weight:300; line-height:1.9; }
 
-/* ── コース（松・竹・梅・お子様プラン） ── */
+/* ── お品書き（看板商品・お食事メニュー） ──
+   2026-10-13：松竹梅・お子様プランの4本立てから、看板商品＋お食事メニューの2本立てへ。
+   .courses のグリッドは769px以上で2列なので、カード2枚で一行に収まる。 */
 .courses{ display:grid; gap:clamp(12px,2vw,16px); }
 .courses__label{
   font-family:var(--serif); font-size:11px; letter-spacing:.3em;
@@ -1153,14 +1155,30 @@ header.site.scrolled .brand-logo--dark{ opacity:1; }
 }
 .course:hover{ transform:translateY(-4px); box-shadow:0 20px 48px rgba(11,25,44,.10); border-color:var(--gold-soft); }
 .course--kids{ border-top-color:var(--vermilion); }
-/* 松竹梅の一文字と価格を一行に */
+/* 役割バッジ：看板商品は朱赤、お食事メニューは金で色分けする */
+.course__role{
+  display:inline-block; font-size:10px; letter-spacing:.2em;
+  color:#fff; background:var(--vermilion); border-radius:3px; padding:3px 10px;
+  margin-bottom:10px;
+}
+.course__role--sub{ background:var(--gold-deep); }
+/* 一品の説明文 */
+.course__desc{
+  margin-top:12px; font-size:14px; color:var(--ink);
+  font-weight:300; line-height:1.95;
+}
+/* 品名の下に価格を置く。
+   旧レイアウトは「松・竹・梅」の1文字名を前提に横並びにしていたため、
+   長い品名（蟹めし・蟹ラーメンセット）を入れると1文字ずつ縦に折り返して崩れた。 */
 .course__head{
-  display:flex; align-items:baseline; justify-content:space-between;
-  gap:14px; padding-bottom:12px; border-bottom:1px solid var(--line);
+  display:flex; flex-direction:column; align-items:flex-start;
+  gap:6px; padding-bottom:12px; border-bottom:1px solid var(--line);
 }
 .course__name{
   font-family:var(--serif); font-weight:700; color:var(--navy);
-  font-size:clamp(18px,2.4vw,22px); letter-spacing:.14em;
+  font-size:clamp(17px,2.3vw,21px); letter-spacing:.04em; line-height:1.55;
+  text-wrap:balance;  /* 長い品名で末尾1文字だけが次行に落ちるのを防ぐ */
+  line-break:strict;  /* 長音符「ー」が行頭に来る禁則違反を防ぐ */
 }
 .course--kids .course__name{ font-size:clamp(15px,2vw,18px); letter-spacing:.08em; white-space:nowrap; }
 .course__price{
@@ -1182,7 +1200,7 @@ header.site.scrolled .brand-logo--dark{ opacity:1; }
 }
 .course__items li em::before{ content:"（"; }
 .course__items li em::after{ content:"）"; }
-/* コース全体への注記：カードの外に置き、4枚の高さを揃える */
+/* 全体への注記：カードの外に置き、カードの高さを揃える */
 .courses__note{
   margin-top:clamp(10px,1.6vw,14px); font-size:12.5px; color:var(--muted);
   font-weight:300; line-height:1.85; text-align:center;

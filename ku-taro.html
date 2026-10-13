@@ -44,7 +44,7 @@
   "alternateName": "うらしまくうたろう",
   "servesCuisine": ["蟹料理", "和食"],
   "description": "浦島伝説の「玉手箱」を再現する体験型の蟹料理店。丸近直送の蟹を陶板焼きで提供します。2026年11月14日（土）、城崎温泉の木屋町小路に開業予定。",
-  "priceRange": "¥3,800 - ¥6,600",
+  "priceRange": "¥1,980 - ¥3,800",
   "currenciesAccepted": "JPY",
   "telephone": "+81-796-36-1339",
   "image": [
@@ -64,37 +64,45 @@
   "acceptsReservations": "https://p.forward.mrck.jp/contact.html",
   "hasMenu": {
     "@type": "Menu",
-    "name": "コース",
-    "hasMenuSection": {
-      "@type": "MenuSection",
-      "name": "コース",
-      "hasMenuItem": [
-        {
+    "name": "お品書き",
+    "hasMenuSection": [
+      {
+        "@type": "MenuSection",
+        "name": "看板商品",
+        "hasMenuItem": {
           "@type": "MenuItem",
-          "name": "松",
-          "description": "極上 蟹の陶板焼き（大）・甲羅味噌付き・蟹めし・蟹ラーメン・デザート",
-          "offers": { "@type": "Offer", "price": "6600", "priceCurrency": "JPY" }
-        },
-        {
-          "@type": "MenuItem",
-          "name": "竹",
-          "description": "極上 蟹の陶板焼き（大）・蟹めし・蟹ラーメン・デザート",
-          "offers": { "@type": "Offer", "price": "5500", "priceCurrency": "JPY" }
-        },
-        {
-          "@type": "MenuItem",
-          "name": "梅",
-          "description": "極上 蟹の陶板焼き（並）・蟹めし・蟹ラーメン・デザート",
-          "offers": { "@type": "Offer", "price": "3800", "priceCurrency": "JPY" }
-        },
-        {
-          "@type": "MenuItem",
-          "name": "お子様プラン",
-          "description": "極上 蟹の陶板焼き（小）・蟹めし・蟹ラーメン・デザート。小学生以下が対象、5歳以下は無料。",
-          "offers": { "@type": "Offer", "price": "2200", "priceCurrency": "JPY" }
+          "name": "浦島の玉手箱",
+          "description": "浦島喰太郎ならではの、特別な蟹体験。表示価格は税別。",
+          "offers": {
+            "@type": "Offer",
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "price": "3800",
+              "priceCurrency": "JPY",
+              "valueAddedTaxIncluded": false
+            }
+          }
         }
-      ]
-    }
+      },
+      {
+        "@type": "MenuSection",
+        "name": "お食事メニュー",
+        "hasMenuItem": {
+          "@type": "MenuItem",
+          "name": "蟹めし・蟹ラーメンセット",
+          "description": "気軽に楽しめる、セルフスタイルの蟹料理。2品あわせてお一人様 合計2杯まで。表示価格は税別。",
+          "offers": {
+            "@type": "Offer",
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "price": "1980",
+              "priceCurrency": "JPY",
+              "valueAddedTaxIncluded": false
+            }
+          }
+        }
+      }
+    ]
   },
   "amenityFeature": [
     { "@type": "LocationFeatureSpecification", "name": "全席テーブル・椅子席", "value": true },
@@ -240,7 +248,7 @@
       <h2 class="ja">お品書き</h2>
     </div>
     <p class="lead reveal">
-      陶板焼きを主役に、蟹を余さず味わい尽くす。締めの蟹ラーメンとデザートまで揃えた、4つのコースでご用意します。
+      陶板焼きを主役に、蟹を余さず味わい尽くす。看板商品「浦島の玉手箱」と、気軽に立ち寄れるお食事メニューをご用意します。
     </p>
 
     <div class="dishes" style="margin-top:clamp(40px,6vw,64px);">
@@ -280,67 +288,33 @@
       </div>
     </div>
 
-    <p class="courses__label reveal" style="margin-top:clamp(40px,6vw,64px);">COURSE</p>
-    <p class="courses__lead reveal">立ちのぼる湯気と、思わずこぼれる歓声。<br />その一瞬は、お一人おひとりのもの。<br />お客様1名につき、1コースのご注文をお願いいたします。</p>
+    <p class="courses__lead reveal" style="margin-top:clamp(40px,6vw,64px);">立ちのぼる湯気と、思わずこぼれる歓声。<br />その一瞬は、お一人おひとりのもの。<br />お客様1名につき、1品以上のご注文をお願いいたします。</p>
     <div class="courses">
 
       <div class="course reveal">
+        <span class="course__role">看板商品</span>
         <div class="course__head">
-          <h3 class="course__name">松</h3>
-          <p class="course__price">6,600<small>円（税込）</small></p>
+          <h3 class="course__name">浦島の玉手箱</h3>
+          <p class="course__price">3,800<small>円（税別）</small></p>
         </div>
-        <ul class="course__items">
-          <li>極上 蟹の陶板焼き<em>大</em></li>
-          <li>甲羅味噌付き</li>
-          <li>蟹めし</li>
-          <li>蟹ラーメン</li>
-          <li>デザート</li>
-        </ul>
+        <p class="course__desc">浦島喰太郎ならではの、特別な蟹体験。</p>
       </div>
 
       <div class="course reveal">
+        <span class="course__role course__role--sub">お食事メニュー</span>
         <div class="course__head">
-          <h3 class="course__name">竹</h3>
-          <p class="course__price">5,500<small>円（税込）</small></p>
+          <h3 class="course__name">蟹めし・蟹ラーメンセット</h3>
+          <p class="course__price">1,980<small>円（税別）</small></p>
         </div>
-        <ul class="course__items">
-          <li>極上 蟹の陶板焼き<em>大</em></li>
-          <li>蟹めし</li>
-          <li>蟹ラーメン</li>
-          <li>デザート</li>
-        </ul>
-      </div>
-
-      <div class="course reveal">
-        <div class="course__head">
-          <h3 class="course__name">梅</h3>
-          <p class="course__price">3,800<small>円（税込）</small></p>
-        </div>
-        <ul class="course__items">
-          <li>極上 蟹の陶板焼き<em>並</em></li>
-          <li>蟹めし</li>
-          <li>蟹ラーメン</li>
-          <li>デザート</li>
-        </ul>
-      </div>
-
-      <div class="course course--kids reveal">
-        <div class="course__head">
-          <h3 class="course__name">お子様プラン</h3>
-          <p class="course__price">2,200<small>円（税込）</small></p>
-        </div>
-        <ul class="course__items">
-          <li>極上 蟹の陶板焼き<em>小</em></li>
-          <li>蟹めし</li>
-          <li>蟹ラーメン</li>
-          <li>デザート</li>
-        </ul>
+        <p class="course__desc">気軽に楽しめる、セルフスタイルの蟹料理。</p>
       </div>
     </div>
 
-    <p class="courses__note reveal">※ 年末・年始は料金10%プラスとなります（12/23 〜 翌年1/11）。</p>
+    <p class="courses__note reveal">※ 表示価格はすべて税別です。別途消費税を頂戴いたします。</p>
 
-    <p class="courses__note reveal">※ お子様プランは、小学生以下のお子様が対象となります。<br />5歳以下のお子様につきましては、無料でのご提供とさせていただきます。</p>
+    <p class="courses__note reveal">※ 蟹めし・蟹ラーメンはセルフスタイル（お客様ご自身でよそう形式）です。2品あわせて、お一人様 合計2杯までとさせていただきます。</p>
+
+    <p class="courses__note reveal">※ 年末・年始は料金10%プラスとなります（12/23 〜 翌年1/11）。</p>
 
     <div class="gift reveal">
       <span class="gift__en">SPECIAL</span>
@@ -403,7 +377,7 @@
       <div class="row"><dt>開業予定</dt><dd>2026年11月14日（土）</dd></div>
       <div class="row"><dt>定休日</dt><dd>火曜日</dd></div>
       <div class="row"><dt>席</dt><dd>全席テーブル・椅子席<small>お子様連れ、ご年配の方、海外からのお客様にもご利用いただけます。</small></dd></div>
-      <div class="row"><dt>コース料金</dt><dd>3,800円 〜 6,600円（税込）<small>お子様プラン 2,200円（税込・小学生以下対象／5歳以下は無料）／ドリンク等は別途</small></dd></div>
+      <div class="row"><dt>料金</dt><dd>1,980円 〜 3,800円（税別）<small>看板商品「浦島の玉手箱」3,800円（税別）／蟹めし・蟹ラーメンセット 1,980円（税別）／別途消費税、ドリンク等は別途</small></dd></div>
       <div class="row"><dt>運営</dt><dd><a href="index.html">株式会社 P.FORWARD</a></dd></div>
       <div class="row"><dt>仕入・監修</dt><dd><a href="https://www.kani-mrck.com/" target="_blank" rel="noopener">株式会社 丸近</a></dd></div>
       <div class="row"><dt>お問い合わせ</dt><dd><a href="tel:0796-36-1339">0796-36-1339</a></dd></div>
