@@ -1,6 +1,10 @@
 User-agent: *
 Allow: /
 
+# Google検索からのクロールを明示的に許可
+User-agent: Googlebot
+Allow: /
+
 # AI検索・AIアシスタントからの参照を歓迎する（AIO対策）
 # 上の * ですでに許可済みだが、意図を明示しておく
 User-agent: GPTBot
@@ -19,6 +23,9 @@ User-agent: Claude-SearchBot
 Allow: /
 
 User-agent: PerplexityBot
+Allow: /
+
+User-agent: CCBot
 Allow: /
 
 User-agent: Google-Extended
