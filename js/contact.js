@@ -62,6 +62,16 @@
         if (res.ok) {
           form.reset();
           setStatus("お問い合わせを送信しました。ご連絡ありがとうございます。担当より追ってご連絡いたします。", "success");
+
+          /* Google広告のコンバージョン（AW-18514187367 / 予約件数測定）。
+             このサイトには「送信完了ページ」が無く、画面遷移せずその場で
+             完了を出すため、完了ページの代わりにここで発火させている。
+             gtag は js/ga4.js で定義される。未読込でも落ちないよう型を見る。 */
+          if (typeof gtag === "function") {
+            gtag("event", "conversion", {
+              send_to: "AW-18514187367/Ht_CCN2ZvJ0dEOeooPxE"
+            });
+          }
         } else {
           return res.json().then(function (json) {
             var msg =

@@ -96,15 +96,20 @@
            form-action 'self';
            style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
            font-src 'self' https://fonts.gstatic.com;
-           img-src 'self' data: blob: https://www.google-analytics.com https://www.googletagmanager.com;
-           script-src 'self' https://www.googletagmanager.com;
-           connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com;" />
+           img-src 'self' data: blob: https://www.google-analytics.com https://www.googletagmanager.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://www.google.com https://www.google.co.jp;
+           script-src 'self' https://www.googletagmanager.com https://www.googleadservices.com https://www.google.com;
+           connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://www.google.com https://www.google.co.jp https://ad.doubleclick.net;
+           frame-src https://www.googletagmanager.com;" />
 
 <!-- ============ アクセス解析（GA4 / G-MV31MNHJTQ） ============
      設定コードは js/ga4.js に置いてある。インラインで書くと CSP に
      'unsafe-inline' が必要になり、サイト全体のXSS耐性が落ちるため。 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MV31MNHJTQ"></script>
 <script src="js/ga4.js"></script>
+
+<!-- ============ Google広告 コンバージョン（AW-18514187367） ============
+     設定コードは js/ads.js に置いてある。理由は ga4.js と同じ（CSPでインライン禁止）。 -->
+<script src="js/ads.js"></script>
 
 <!-- 電話番号の自動リンク化を防止 -->
 <meta name="format-detection" content="telephone=no" />
