@@ -219,6 +219,11 @@ header.site.nav-open .nav-toggle span:nth-child(3){ transform:translateY(-8px) r
     linear-gradient(180deg, rgba(0,0,0,.20) 0%, rgba(0,0,0,.50) 100%),
     url("../images/ku-taro/hero-04.jpg");
 }
+.hero__slide.s5{
+  background-image:
+    linear-gradient(180deg, rgba(0,0,0,.24) 0%, rgba(0,0,0,.46) 100%),
+    url("../images/ku-taro/IMG03.jpg");
+}
 
 /* 海面のゆらめき（擬似シマー）：下半分だけに淡い光のムラをゆっくり漂わせる。
    画像の海面高さはバラバラなので、幾何学的な歪みではなく“光の濃淡”で水面感を出す。 */
