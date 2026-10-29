@@ -202,23 +202,22 @@ header.site.nav-open .nav-toggle span:nth-child(3){ transform:translateY(-8px) r
 .hero__slide.s1{
   background-image:
     linear-gradient(180deg, rgba(0,0,0,.24) 0%, rgba(0,0,0,.46) 100%),
-    url("../images/ku-taro/IMG01.jpg");
+    url("../images/ku-taro/hero-01.jpg");
 }
 .hero__slide.s2{
   background-image:
     linear-gradient(180deg, rgba(0,0,0,.24) 0%, rgba(0,0,0,.46) 100%),
-    url("../images/ku-taro/IMG02.jpg");
+    url("../images/ku-taro/hero-02.jpg");
 }
 .hero__slide.s3{
   background-image:
     linear-gradient(180deg, rgba(0,0,0,.24) 0%, rgba(0,0,0,.46) 100%),
-    url("../images/ku-taro/IMG03.jpg");
+    url("../images/ku-taro/hero-03.jpg");
 }
 .hero__slide.s4{
   background-image:
     linear-gradient(180deg, rgba(0,0,0,.20) 0%, rgba(0,0,0,.50) 100%),
-    url("../images/ku-taro/IMG04.jpg");
-  background-position: center 55%;
+    url("../images/ku-taro/hero-04.jpg");
 }
 
 /* 海面のゆらめき（擬似シマー）：下半分だけに淡い光のムラをゆっくり漂わせる。
