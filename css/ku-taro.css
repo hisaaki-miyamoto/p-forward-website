@@ -1158,6 +1158,12 @@ header.site.scrolled .brand-logo--dark{ opacity:1; }
   transition:transform .4s ease, box-shadow .4s ease, border-color .4s ease;
 }
 .course:hover{ transform:translateY(-4px); box-shadow:0 20px 48px rgba(11,25,44,.10); border-color:var(--gold-soft); }
+/* 看板商品の写真：料理カード（.dish__photo）と同じく、余白を打ち消してカード上部いっぱいに置く */
+.course__photo{
+  margin:calc(-1 * clamp(18px,2.8vw,24px)) calc(-1 * clamp(16px,2.6vw,24px)) clamp(14px,2.2vw,18px);
+  border-radius:7px 7px 0 0; overflow:hidden; background:var(--paper-soft);
+}
+.course__photo img{ display:block; width:100%; height:auto; aspect-ratio:3/2; object-fit:cover; }
 /* 役割バッジ：看板商品は朱赤、お食事メニューは金で色分けする */
 .course__role{
   display:inline-block; font-size:10px; letter-spacing:.2em;
