@@ -50,7 +50,7 @@
       "alternateName": ["うらしまくうたろう", "Urashima Kuutaro"],
       "servesCuisine": ["蟹料理", "和食", "焼き蟹", "カニ料理"],
       "description": "兵庫県豊岡市・城崎温泉の木屋町小路に2027年1月9日（土）開業予定の体験型蟹料理店。浦島伝説の「玉手箱」をモチーフに、蟹の陶板焼き、蟹めし、蟹ラーメンを提供します。",
-      "priceRange": "¥1,980 - ¥3,800（税別）",
+      "priceRange": "¥880 - ¥4,180（税込）",
       "currenciesAccepted": "JPY",
       "paymentAccepted": "現金、クレジットカード等",
       "email": "p.forward.2005@gmail.com",
@@ -105,11 +105,11 @@
             "name": "看板商品",
             "hasMenuItem": {
               "@type": "MenuItem",
-              "name": "浦島の玉手箱",
-              "description": "浦島喰太郎ならではの、特別な蟹体験。表示価格は税別。",
+              "name": "焼き蟹 堪能セット",
+              "description": "浦島喰太郎ならではの、特別な蟹体験。表示価格は税込。",
               "offers": {
                 "@type": "Offer",
-                "price": "3800",
+                "price": "4180",
                 "priceCurrency": "JPY",
                 "url": "https://p.forward.mrck.jp/ku-taro.html#menu"
               }
@@ -120,15 +120,33 @@
             "name": "お食事メニュー",
             "hasMenuItem": {
               "@type": "MenuItem",
-              "name": "蟹めし・蟹ラーメンセット",
-              "description": "気軽に楽しめる、セルフスタイルの蟹料理。表示価格は税別。",
+              "name": "蟹めし・蟹ラーメンセット（無制限）",
+              "description": "気軽に楽しめる、セルフスタイルの蟹料理。表示価格は税込。",
               "offers": {
                 "@type": "Offer",
-                "price": "1980",
+                "price": "2200",
                 "priceCurrency": "JPY",
                 "url": "https://p.forward.mrck.jp/ku-taro.html#menu"
               }
             }
+          },
+          {
+            "@type": "MenuSection",
+            "name": "追加メニュー",
+            "hasMenuItem": [
+              {
+                "@type": "MenuItem",
+                "name": "焼き甲羅味噌",
+                "description": "表示価格は税込。",
+                "offers": { "@type": "Offer", "price": "880", "priceCurrency": "JPY", "url": "https://p.forward.mrck.jp/ku-taro.html#menu" }
+              },
+              {
+                "@type": "MenuItem",
+                "name": "焼き蟹追加（半人前）",
+                "description": "表示価格は税込。",
+                "offers": { "@type": "Offer", "price": "990", "priceCurrency": "JPY", "url": "https://p.forward.mrck.jp/ku-taro.html#menu" }
+              }
+            ]
           }
         ]
       },
@@ -206,7 +224,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet" />
 
 <!-- ?v= はキャッシュ対策。CSSを更新したらこの数字も必ず上げること -->
-<link rel="stylesheet" href="css/ku-taro.css?v=20261030a" />
+<link rel="stylesheet" href="css/ku-taro.css?v=20261104a" />
 </head>
 <body>
 
@@ -310,7 +328,7 @@
       <h2 class="ja">お品書き</h2>
     </div>
     <p class="lead reveal">
-      陶板焼きを主役に、蟹を余さず味わい尽くす。看板商品「浦島の玉手箱」と、気軽に立ち寄れるお食事メニューをご用意します。
+      陶板焼きを主役に、蟹を余さず味わい尽くす。看板商品「焼き蟹 堪能セット」と、気軽に立ち寄れるお食事メニューをご用意します。
     </p>
 
     <div class="dishes" style="margin-top:clamp(40px,6vw,64px);">
@@ -355,12 +373,12 @@
 
       <div class="course reveal">
         <figure class="course__photo">
-          <img src="images/ku-taro/photo-tamatebako-plan.jpg" alt="浦島の玉手箱のお料理一式。陶板いっぱいの焼き蟹を中心に、蟹めし、蟹ラーメン、薬味、玉手箱デザートを並べた卓" width="1620" height="1080" loading="lazy" decoding="async" />
+          <img src="images/ku-taro/photo-tamatebako-plan.jpg" alt="焼き蟹 堪能セットのお料理一式。陶板いっぱいの焼き蟹を中心に、蟹めし、蟹ラーメン、薬味、玉手箱デザートを並べた卓" width="1620" height="1080" loading="lazy" decoding="async" />
         </figure>
         <span class="course__role">看板商品</span>
         <div class="course__head">
-          <h3 class="course__name">浦島の玉手箱</h3>
-          <p class="course__price">3,800<small>円（税別）</small></p>
+          <h3 class="course__name">焼き蟹 堪能セット</h3>
+          <p class="course__price">4,180<small>円（税込）</small></p>
         </div>
         <p class="course__desc">浦島喰太郎ならではの、特別な蟹体験。<span class="dish__imgnote">※画像はイメージです。</span></p>
       </div>
@@ -371,14 +389,36 @@
         </figure>
         <span class="course__role course__role--sub">お食事メニュー</span>
         <div class="course__head">
-          <h3 class="course__name">蟹めし・蟹ラーメンセット</h3>
-          <p class="course__price">1,980<small>円（税別）</small></p>
+          <h3 class="course__name"><span class="course__nw">蟹めし・</span><span class="course__nw">蟹ラーメンセット</span><span class="course__sub">無制限</span></h3>
+          <p class="course__price">2,200<small>円（税込）</small></p>
         </div>
         <p class="course__desc">気軽に楽しめる、セルフスタイルの蟹料理。<span class="dish__imgnote">※画像はイメージです。</span></p>
       </div>
+
+      <div class="course reveal">
+        <figure class="course__photo course__photo--pending" aria-label="焼き甲羅味噌の画像は現在準備中です">
+          <span>画像は現在、準備中です</span>
+        </figure>
+        <span class="course__role course__role--add">追加メニュー</span>
+        <div class="course__head">
+          <h3 class="course__name">焼き甲羅味噌</h3>
+          <p class="course__price">880<small>円（税込）</small></p>
+        </div>
+      </div>
+
+      <div class="course reveal">
+        <figure class="course__photo course__photo--pending" aria-label="焼き蟹追加（半人前）の画像は現在準備中です">
+          <span>画像は現在、準備中です</span>
+        </figure>
+        <span class="course__role course__role--add">追加メニュー</span>
+        <div class="course__head">
+          <h3 class="course__name">焼き蟹追加<span class="course__sub">半人前</span></h3>
+          <p class="course__price">990<small>円（税込）</small></p>
+        </div>
+      </div>
     </div>
 
-    <p class="courses__note reveal">※ 表示価格はすべて税別です。別途消費税を頂戴いたします。</p>
+    <p class="courses__note reveal">※ 表示価格はすべて税込です。</p>
 
     <p class="courses__note reveal">※ 蟹めし・蟹ラーメンはセルフスタイル（お客様ご自身でよそう形式）です。</p>
 
@@ -445,7 +485,7 @@
       <div class="row"><dt>開業予定</dt><dd>2027年1月9日（土）</dd></div>
       <div class="row"><dt>定休日</dt><dd>火曜日</dd></div>
       <div class="row"><dt>席</dt><dd>全席テーブル・椅子席<small>お子様連れ、ご年配の方、海外からのお客様にもご利用いただけます。</small></dd></div>
-      <div class="row"><dt>料金</dt><dd>1,980円 〜 3,800円（税別）<small>看板商品「浦島の玉手箱」3,800円（税別）／蟹めし・蟹ラーメンセット 1,980円（税別）／別途消費税、ドリンク等は別途</small></dd></div>
+      <div class="row"><dt>料金</dt><dd>2,200円 〜 4,180円（税込）<small>看板商品「焼き蟹 堪能セット」4,180円（税込）／蟹めし・蟹ラーメンセット（無制限）2,200円（税込）／追加メニュー：焼き甲羅味噌 880円・焼き蟹追加（半人前）990円（いずれも税込）／ドリンク等は別途</small></dd></div>
       <div class="row"><dt>運営</dt><dd><a href="index.html">株式会社 P.FORWARD</a></dd></div>
       <div class="row"><dt>仕入・監修</dt><dd><a href="https://www.kani-mrck.com/" target="_blank" rel="noopener">株式会社 丸近</a></dd></div>
       <div class="row"><dt>お問い合わせ</dt><dd>一次対応は当面メールのみ：<a href="mailto:p.forward.2005@gmail.com">p.forward.2005@gmail.com</a></dd></div>

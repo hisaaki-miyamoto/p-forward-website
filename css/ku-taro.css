@@ -1171,6 +1171,25 @@ header.site.scrolled .brand-logo--dark{ opacity:1; }
   margin-bottom:10px;
 }
 .course__role--sub{ background:var(--gold-deep); }
+.course__role--add{ background:var(--navy); }
+/* 品名の途中（蟹ラー｜メン）で折り返さないよう、語のまとまりごとに改行させる */
+.course__nw{ display:inline-block; }
+/* 品名に添える小見出し（無制限・半人前） */
+.course__sub{
+  display:inline-block; margin-left:.5em; padding:1px 8px; vertical-align:.15em;
+  font-family:var(--sans); font-size:.58em; font-weight:500; letter-spacing:.1em;
+  color:var(--vermilion-deep); border:1px solid var(--vermilion-soft); border-radius:3px;
+}
+/* 2026-11-04：写真がまだ無い追加メニュー用の枠。写真と同じ3:2で場所だけ取っておく */
+.course__photo--pending{
+  display:flex; align-items:center; justify-content:center; aspect-ratio:3/2;
+  background:repeating-linear-gradient(135deg, var(--paper-soft) 0 12px, #f2eee7 12px 24px);
+  border-bottom:1px dashed var(--gold-soft);
+}
+.course__photo--pending span{
+  font-family:var(--serif); font-size:14px; letter-spacing:.14em; color:var(--muted);
+  background:rgba(255,255,255,.85); padding:6px 16px; border-radius:3px;
+}
 /* 一品の説明文 */
 .course__desc{
   margin-top:12px; font-size:14px; color:var(--ink);
